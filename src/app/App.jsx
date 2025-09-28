@@ -1,15 +1,20 @@
-import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.css";
-import Main from "../Main/Main.jsx";
-import Footer from "@/Footer/Footer.jsx";
+import Landing from "../pages/Landing";
+const FORM_URL = "http://localhost:5173/quiz/683ea0c790fa7b3a18f38e98";
 
 function App() {
+  const ID = FORM_URL.split("/")[4];
+  useEffect(() => {
+    console.log(ID);
+  });
+
   return (
-      <>
-        <Main/>
-        <Footer/>
-      </>
-  )
+    <Routes>
+      <Route path={`/quiz/:id`} element={<Landing />} />
+    </Routes>
+  );
 }
 
 export default App;

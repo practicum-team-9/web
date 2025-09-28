@@ -1,0 +1,13 @@
+.landing {
+    max-width: 1280px;
+    min-width: 320px;
+    height: 100%;
+    display: grid;
+    row-gap: 20px;
+    margin-bottom: 50px;
+}
+
+.confirmation{
+display: flex;
+    justify-content: center;
+}

@@ -12,7 +12,7 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src"),
       "@widgets": resolve(__dirname, "src/widgets"),
-      "@ui": resolve(__dirname, "src/widgets/shared/ui"),
+      "@ui": resolve(__dirname, "src/shared/ui"),
     },
   },
 });
