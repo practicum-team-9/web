@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
-import Landing from "../pages/Landing";
+import Landing from "../pages/Landing/Landing.jsx";
 const FORM_URL = "http://localhost:5173/quiz/683ea0c790fa7b3a18f38e98";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <Routes>
+      <Route path={`/`} element={<Landing />} />
       <Route path={`/quiz/:id`} element={<Landing />} />
     </Routes>
   );

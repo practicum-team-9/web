@@ -1,0 +1,65 @@
+.landing {
+    background-color: #FFFFFF;
+    min-height: 522px;
+    box-sizing: border-box;
+    border-radius: 46px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 60px;
+    }
+
+.logo-invatur {
+    margin-bottom: 70px;
+    }
+
+.img-top {
+    width: 199px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.img-bottom {
+    width: 212px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.title {
+    font-size: 50px;
+    line-height: 100%;
+    max-width: 1016px;
+    margin: 0 auto;
+
+    display: inline-block;
+    justify-self: center;
+}
+
+.buttons {
+
+}
+
+.confirmation{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 928px) {
+    .logo-invatur {
+        width: 256px;
+        margin-bottom: 55px;
+    }
+
+    .img-top {
+        width: 199px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .logo-invatur {
+        width: 168px;
+        margin-bottom: 50px;
+    }
+}

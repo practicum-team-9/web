@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'ActayWide';
+    src: url('./ActayWide-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
