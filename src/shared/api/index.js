@@ -16,7 +16,7 @@ const makeRequest = (url, method, data) => {
 
 export const getForms = (search = "") => {
   return makeRequest(
-    `/v1/forms/get-all-forms/${search ? `search=${search}` : ""}`,
+    `/v1/forms/get-all-forms/${search ? `?search=${search}` : ""}`,
     "GET"
   );
 };
