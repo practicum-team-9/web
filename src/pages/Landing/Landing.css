@@ -261,3 +261,8 @@
         font-size: 19px;
     }
 }
+
+.form-not-found {
+    display: flex;
+    justify-content: center;
+}
