@@ -28,3 +28,11 @@ export const addForm = () => {
 export const deleteForm = (id) => {
   return makeRequest(`/v1/forms/delete-form/${id}`, "DELETE");
 };
+
+export const updateForm = (id) => {
+  return makeRequest(`/v1/forms/update-form/${id}`, "PUT");
+};
+
+export const getFormById = (id) => {
+  return makeRequest(`/v1/forms/get-form/${id}`, "GET");
+};
