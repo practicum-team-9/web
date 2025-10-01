@@ -1,0 +1,121 @@
+.button{
+    max-width: 262px;
+    width: 100%;
+    min-height: 64px;
+    font-family: inherit;
+    font-size: 18px;
+    border-radius: 32px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.button:active {
+    cursor: pointer;
+}
+
+.button:focus {
+    background-color: #000000;
+    color: #FFFFFF;
+    border-color: #000000;
+    outline: 3px solid #FFFFFF;
+    outline-offset: -5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button:disabled {
+    pointer-events: none;
+}
+
+.button_light {
+    border-color: #000000;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.button_light:disabled {
+    border-color: #EAEAEA;
+    color: #EAEAEA;
+    background-color: #FFFFFF;
+}
+
+.button_light:active {
+    background-color: #000000;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.button_light:hover {
+    background-color: #EAEAEA;
+    cursor: pointer;
+}
+
+.button_light:active {
+    background-color: inherit;
+    -webkit-box-shadow: 0 0 5px #000000 inset;
+    box-shadow: 0 0 5px #000000 inset;
+    cursor: pointer;
+}
+
+.button_dark {
+    border-color:  #000000;
+    color: #FFFFFF;
+    background-color: #000000;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.button_dark:disabled {
+    border-color: #EAEAEA;
+    color: #FFFFFF;
+    background-color:#EAEAEA;
+}
+
+.button_dark:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.button-image{
+    width: 32px;
+    margin-left: 16px;
+}
+
+.button_dark:active {
+    color: #EAEAEA;
+}
+
+@media screen and (max-width: 928px) {
+    .button{
+        font-size: 40px;
+        line-height: 45px;
+        max-width: 552px;
+        min-height: 102px;
+        border-radius: 48px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .button{
+        font-size: 30px;
+        line-height: 38px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .button{
+        font-size: 16px;
+        line-height: 22px;
+        max-width: 278px;
+        min-height: 64px;
+    }
+}
