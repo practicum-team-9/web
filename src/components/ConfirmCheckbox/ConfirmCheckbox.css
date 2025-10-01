@@ -20,13 +20,10 @@
 }
 
 .hidden-checkbox{
-    display: none;
-    -webkit-appearance: none;
     position: absolute;
     opacity: 0;
-    pointer-events: none;
-    width: 0;
-    height: 0;
+    width: 1px;
+    height: 1px;
 }
 
 .custom-checkbox {

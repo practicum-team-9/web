@@ -12,11 +12,20 @@ function ConfirmCheckbox({isChecked, setIsChecked}) {
                 <label className="checkbox-label">
                     <input
                         type="checkbox"
-                        checked={isChecked}
-                        onChange={toggleCheckbox}
                         className="hidden-checkbox"
+                        checked={isChecked}
                     />
-                    <span className={`custom-checkbox ${isChecked ? 'custom-checkbox_checked' : 'custom-checkbox_unchecked'}`}></span>
+                    <span tabIndex={0}
+                          role="checkbox"
+                          aria-checked={isChecked}
+                          onClick={toggleCheckbox}
+                          onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                  e.preventDefault();
+                                  toggleCheckbox();
+                              }
+                          }}
+                          className={`custom-checkbox ${isChecked ? 'custom-checkbox_checked' : 'custom-checkbox_unchecked'}`}></span>
                 </label>
                     <p className="checkbox-text">Принимаю&nbsp;
                         <a className="checkbox-link"

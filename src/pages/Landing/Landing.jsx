@@ -26,7 +26,7 @@ function Landing() {
               <img src={ImageTop}
                    className="img-top" alt="Логотип сердце в руках"/>
               <img src={ImageBottom}
-                   className="img-bottom" alt="Логотип сердце в руках"/>
+                   className="img-bottom" alt="Логотип коробка в руках"/>
               <h1 className="title title_big">Для прохождения анкетирования выберите «Я&nbsp;Форму»  или
                   <span className="no-wrap">&nbsp;</span>
                   <span className="wrap"> </span>«Телеграм&nbsp;бот»</h1>
