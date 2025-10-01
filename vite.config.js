@@ -11,7 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
-      "@widgets": resolve(__dirname, "src/widgets"),
+      "@widgets": resolve(__dirname, "src/widgets/index.js"),
       "@ui": resolve(__dirname, "src/shared/ui"),
     },
   },
