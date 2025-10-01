@@ -25,14 +25,21 @@
 
 2. Запустите проект:
 
-### ```npm run start```
+### ```npm run dev```
 
 3. Сборка для продакшена:
 
 ### ```npm run build```
+
+4. Запустить продакшен:
+
+### ```npm run preview```
 
 ## 4. Стек: 
 _JavaScript_, _React_, _React Router DOM_, _Material UI_, _Axios_, _FSD_, _Vite_
 
 ## 5. Cсылки на фреймворки, библиотеки, иконки и шрифты
 Ссылки
+
+## 6. Ссылка на фигму
+https://www.figma.com/design/SODi9NPku6RiM3bgmeNdca/%D0%98%D0%BD%D0%B2%D0%B0%D1%82%D1%83%D1%80_%D0%AF%D0%9F_%D0%A5%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD
