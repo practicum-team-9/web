@@ -31,7 +31,6 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   };
 
   const isButtonDisabled = (row) => {
-    console.log(Object.values(row));
     return Object.values(row).filter((i) => i.length === 0).length > 0;
   };
 

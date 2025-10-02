@@ -23,17 +23,17 @@
 
 ### ```npm install```
 
-2. Дев-режим:
-
-### ```npm run dev```
-
-3. Сборка для прода:
+2. Сборка для прода:
 
 ### ```npm run build```
 
-4. Запустить прод-режим:
+3. Запустить прод-режим:
 
-### ```npm run preview```
+### ```npm run deploy```
+
+Дев-режим:
+
+### ```npm run dev```
 
 ## 4. Стек: 
 _JavaScript_, _React_, _React Router DOM_, _Material UI_, _Axios_, _FSD_, _Vite_
