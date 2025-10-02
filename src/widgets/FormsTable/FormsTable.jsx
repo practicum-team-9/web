@@ -13,35 +13,26 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import { useState } from "react";
-import { TABLE_ROW_DATA, TABLE_DATA_TEMP } from "@/app/constants";
+import { useEffect, useState } from "react";
+import { TABLE_ROW_DATA } from "@/app/constants";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 
-function FormsTable() {
+function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const [isPending, setIsPending] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
-  const [newRow, setNewRow] = useState("");
-
-  const displayCellData = (cell) => {
-    return cell[0].endsWith("Date") ? formatDate(cell[1]) : cell[1];
-  };
+  const [newForm, setNewForm] = useState("");
 
   const handleEditClick = (index) => {
     setEditIndex(index);
-    setEditedRow(TABLE_DATA_TEMP[index]);
+    setEditedRow(forms[index]);
   };
 
   const isButtonDisabled = (row) => {
-    return Object.values(row).filter((i) => i.length === 0).length > 0;
-  };
-
-  const handleSaveClick = (index) => {
-    // dispatch(editTableRow({ index: index, row: editedRow }));
-    setEditIndex(-1);
+    return row === "";
   };
 
   const handleChange = (e) => {
@@ -51,16 +42,48 @@ function FormsTable() {
 
   const handleNewRowChange = (e) => {
     const { name, value } = e.target;
-    setNewRow({ ...newRow, [name]: value });
+    setNewForm({ ...newForm, [name]: value });
+  };
+
+  // api calls
+  const handleSaveClick = (id, form) => {
+    setIsPending(true);
+    updateForm(id, editedRow)
+      .then((res) => {
+        setIsPending(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsPending(false);
+      });
+    setEditIndex(-1);
   };
 
   const handleAddRow = () => {
-    // dispatch(addTableRow(newRow));
-    setNewRow(DEFAULT_FIELDS);
+    setIsPending(true);
+    addForm(newForm)
+      .then((res) => {
+        setForms((prev) => [...prev, newForm]);
+        setNewForm("");
+        setIsPending(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsPending(false);
+      });
   };
 
   const handleDeleteRow = (id) => {
-    // dispatch(deleteTableRow(id));
+    setIsPending(true);
+    deleteForm(id)
+      .then((res) => {
+        setForms(forms.filter((i) => i.id !== id));
+        setIsPending(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsPending(false);
+      });
   };
 
   return (
@@ -107,12 +130,19 @@ function FormsTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {TABLE_DATA_TEMP.length > 0 ? (
-              TABLE_DATA_TEMP.map((row, rowIndex) => {
+            {forms.length > 0 ? (
+              forms.map((row, rowIndex) => {
                 const cells = Object.entries(row);
+                let arr = [];
+                for (let index = 0; index < TABLE_ROW_DATA.length; index++) {
+                  arr.push([
+                    TABLE_ROW_DATA[index].name,
+                    row[TABLE_ROW_DATA[index].name],
+                  ]);
+                }
                 return (
                   <TableRow key={rowIndex}>
-                    {cells.map((cell, cellIndex) => (
+                    {arr.map((cell, cellIndex) => (
                       <TableCell
                         key={cellIndex}
                         sx={{
@@ -120,6 +150,7 @@ function FormsTable() {
                           maxWidth: "50px",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
                         }}
                       >
                         {editIndex === rowIndex ? (
@@ -137,7 +168,7 @@ function FormsTable() {
                             onChange={handleChange}
                           />
                         ) : (
-                          displayCellData(cell)
+                          cell[1]
                         )}
                       </TableCell>
                     ))}
@@ -151,7 +182,7 @@ function FormsTable() {
                       {editIndex === rowIndex ? (
                         <IconButton
                           aria-label="save"
-                          onClick={() => handleSaveClick(rowIndex)}
+                          onClick={() => handleSaveClick(row.id)}
                           disabled={isButtonDisabled(editedRow)}
                         >
                           <CheckIcon />
@@ -180,7 +211,9 @@ function FormsTable() {
                   colSpan={9}
                   style={{ textAlign: "center", backgroundColor: "#f0f0f0" }}
                 >
-                  <div> No data yet.</div>
+                  <div>
+                    Формы не найдены. Чтобы добавить форму, нажмите "Добавить"
+                  </div>
                 </TableCell>
               </TableRow>
             )}
@@ -195,7 +228,7 @@ function FormsTable() {
                       type={cell.type}
                       variant="standard"
                       name={cell.name}
-                      value={newRow[cell.name] ?? ""}
+                      value={newForm[cell.name] ?? ""}
                       onChange={handleNewRowChange}
                       sx={{
                         "& .MuiInputBase-input": {
@@ -207,14 +240,14 @@ function FormsTable() {
                   </TableCell>
                 );
               })}
-              <TableCell sx={{ fontSize: "14px", maxWidth: "50px" }}>
+              <TableCell sx={{ fontSize: "14px", maxWidth: "100px" }}>
                 <Button
                   variant="contained"
                   onClick={handleAddRow}
-                  disabled={isButtonDisabled(newRow)}
+                  disabled={isButtonDisabled(newForm)}
                   sx={{ backgroundColor: "black" }}
                 >
-                  Add
+                  Добавить
                 </Button>
               </TableCell>
             </TableRow>
