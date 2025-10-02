@@ -20,7 +20,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 
-function FormsTable() {
+function FormsTable({ form }) {
   const [isPending, setIsPending] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
@@ -106,119 +106,125 @@ function FormsTable() {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {TABLE_DATA_TEMP.length > 0 ? (
-              TABLE_DATA_TEMP.map((row, rowIndex) => {
-                const cells = Object.entries(row);
-                return (
-                  <TableRow key={rowIndex}>
-                    {cells.map((cell, cellIndex) => (
+          {!form ? (
+            <div>
+              <p>Нет доступных форм</p>
+            </div>
+          ) : (
+            <TableBody>
+              {TABLE_DATA_TEMP.length > 0 ? (
+                TABLE_DATA_TEMP.map((row, rowIndex) => {
+                  const cells = Object.entries(row);
+                  return (
+                    <TableRow key={rowIndex}>
+                      {cells.map((cell, cellIndex) => (
+                        <TableCell
+                          key={cellIndex}
+                          sx={{
+                            fontSize: "14px",
+                            maxWidth: "50px",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {editIndex === rowIndex ? (
+                            <TextField
+                              type="text"
+                              variant="standard"
+                              sx={{
+                                "& .MuiInputBase-input": {
+                                  fontSize: "14px",
+                                },
+                                width: "100%",
+                              }}
+                              name={cell[0]}
+                              value={editedRow[cell[0]]}
+                              onChange={handleChange}
+                            />
+                          ) : (
+                            displayCellData(cell)
+                          )}
+                        </TableCell>
+                      ))}
+
                       <TableCell
-                        key={cellIndex}
-                        sx={{
-                          fontSize: "14px",
-                          maxWidth: "50px",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
+                        style={{
+                          display: "flex",
+                          gap: "5px",
                         }}
                       >
                         {editIndex === rowIndex ? (
-                          <TextField
-                            type="text"
-                            variant="standard"
-                            sx={{
-                              "& .MuiInputBase-input": {
-                                fontSize: "14px",
-                              },
-                              width: "100%",
-                            }}
-                            name={cell[0]}
-                            value={editedRow[cell[0]]}
-                            onChange={handleChange}
-                          />
+                          <IconButton
+                            aria-label="save"
+                            onClick={() => handleSaveClick(rowIndex)}
+                            disabled={isButtonDisabled(editedRow)}
+                          >
+                            <CheckIcon />
+                          </IconButton>
                         ) : (
-                          displayCellData(cell)
+                          <IconButton
+                            aria-label="edit"
+                            onClick={() => handleEditClick(rowIndex)}
+                          >
+                            <EditIcon />
+                          </IconButton>
                         )}
+                        <IconButton
+                          aria-label="delete"
+                          onClick={() => handleDeleteRow(row.id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
                       </TableCell>
-                    ))}
-
+                    </TableRow>
+                  );
+                })
+              ) : (
+                <TableRow sx={{ width: "100%", textAlign: "center" }}>
+                  <TableCell
+                    colSpan={9}
+                    style={{ textAlign: "center", backgroundColor: "#f0f0f0" }}
+                  >
+                    <div> No data yet.</div>
+                  </TableCell>
+                </TableRow>
+              )}
+              <TableRow>
+                {TABLE_ROW_DATA.map((cell, index) => {
+                  return (
                     <TableCell
-                      style={{
-                        display: "flex",
-                        gap: "5px",
-                      }}
+                      key={index}
+                      sx={{ fontSize: "14px", maxWidth: "50px" }}
                     >
-                      {editIndex === rowIndex ? (
-                        <IconButton
-                          aria-label="save"
-                          onClick={() => handleSaveClick(rowIndex)}
-                          disabled={isButtonDisabled(editedRow)}
-                        >
-                          <CheckIcon />
-                        </IconButton>
-                      ) : (
-                        <IconButton
-                          aria-label="edit"
-                          onClick={() => handleEditClick(rowIndex)}
-                        >
-                          <EditIcon />
-                        </IconButton>
-                      )}
-                      <IconButton
-                        aria-label="delete"
-                        onClick={() => handleDeleteRow(row.id)}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
+                      <TextField
+                        type={cell.type}
+                        variant="standard"
+                        name={cell.name}
+                        value={newRow[cell.name] ?? ""}
+                        onChange={handleNewRowChange}
+                        sx={{
+                          "& .MuiInputBase-input": {
+                            fontSize: "14px",
+                          },
+                          width: "100%",
+                        }}
+                      />
                     </TableCell>
-                  </TableRow>
-                );
-              })
-            ) : (
-              <TableRow sx={{ width: "100%", textAlign: "center" }}>
-                <TableCell
-                  colSpan={9}
-                  style={{ textAlign: "center", backgroundColor: "#f0f0f0" }}
-                >
-                  <div> No data yet.</div>
+                  );
+                })}
+                <TableCell sx={{ fontSize: "14px", maxWidth: "50px" }}>
+                  <Button
+                    variant="contained"
+                    onClick={handleAddRow}
+                    disabled={isButtonDisabled(newRow)}
+                    sx={{ backgroundColor: "black" }}
+                  >
+                    Add
+                  </Button>
                 </TableCell>
               </TableRow>
-            )}
-            <TableRow>
-              {TABLE_ROW_DATA.map((cell, index) => {
-                return (
-                  <TableCell
-                    key={index}
-                    sx={{ fontSize: "14px", maxWidth: "50px" }}
-                  >
-                    <TextField
-                      type={cell.type}
-                      variant="standard"
-                      name={cell.name}
-                      value={newRow[cell.name] ?? ""}
-                      onChange={handleNewRowChange}
-                      sx={{
-                        "& .MuiInputBase-input": {
-                          fontSize: "14px",
-                        },
-                        width: "100%",
-                      }}
-                    />
-                  </TableCell>
-                );
-              })}
-              <TableCell sx={{ fontSize: "14px", maxWidth: "50px" }}>
-                <Button
-                  variant="contained"
-                  onClick={handleAddRow}
-                  disabled={isButtonDisabled(newRow)}
-                  sx={{ backgroundColor: "black" }}
-                >
-                  Add
-                </Button>
-              </TableCell>
-            </TableRow>
-          </TableBody>
+            </TableBody>
+          )}
         </Table>
       </TableContainer>
     </Paper>
