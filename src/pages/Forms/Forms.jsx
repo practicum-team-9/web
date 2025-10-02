@@ -8,7 +8,7 @@ function Forms({ getForms }) {
 
   useEffect(() => {
     getForms()
-      .then((forms) => setForms(forms))
+      .then((forms) => setForms(forms.data))
       .catch((err) => console.log(err));
   }, []);
 
