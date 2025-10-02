@@ -6,11 +6,6 @@ import "./FormsList.css";
 import { useNavigate } from "react-router-dom";
 
 function FormsList({ forms }) {
-  const temp = [
-    { name: "Заявка на содействие в трудоустройстве", id: "1" },
-    { name: "Консультация по трудоустройству", id: "2" },
-  ];
-
   const navigate = useNavigate();
 
   const handleButtonClick = (id) => {
@@ -18,26 +13,28 @@ function FormsList({ forms }) {
   };
 
   return (
-    <main className="list">
+    <div className="list">
       <img
         src={ImageBottom}
         className="img-bottom"
         alt="Логотип коробка в руках"
       />
       <h1 className="title title_big">Заполните анкету</h1>
-      <div className="form-list">
-        {temp.map((form, index) => (
-          <CustomButton
-            className={`list-button ${
-              index % 2 === 0 ? "button_dark" : "button_light"
-            }`}
-            onClick={() => handleButtonClick(form.id)}
-          >
-            {form.name}
-          </CustomButton>
+      <ul className="form-list">
+        {forms.map((form, index) => (
+          <li key={index}>
+            <CustomButton
+              className={`list-button ${
+                index % 2 === 0 ? "button_dark" : "button_light"
+              }`}
+              onClick={() => handleButtonClick(form.id)}
+            >
+              {form.name}
+            </CustomButton>
+          </li>
         ))}
-      </div>
-    </main>
+      </ul>
+    </div>
   );
 }
 

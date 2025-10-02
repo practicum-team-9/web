@@ -1,19 +1,37 @@
+@import url(../assets/fonts/index.css);
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #root {
-  /* max-width: 1440px; */
   min-width: 320px;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   box-sizing: border-box;
   height: 100%;
   padding: 55px 25px;
+  font-family: ActayWide, sans-serif;
+  color: #000000;
+  font-weight: bold;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   margin: 0;
   padding: 0;
   color: #000000;
-  text-decoration:none;
+  text-decoration: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
