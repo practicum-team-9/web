@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FormsTable } from "@widgets";
+import { Template } from "@widgets";
 
 function Admin(props) {
   const [forms, setForms] = useState([]);
@@ -12,13 +13,15 @@ function Admin(props) {
   }, []);
 
   return (
-    <FormsTable
-      forms={forms}
-      setForms={setForms}
-      addForm={props.addForm}
-      updateForm={props.updateForm}
-      deleteForm={props.deleteForm}
-    />
+    <Template>
+      <FormsTable
+        forms={forms}
+        setForms={setForms}
+        addForm={props.addForm}
+        updateForm={props.updateForm}
+        deleteForm={props.deleteForm}
+      />
+    </Template>
   );
 }
 
