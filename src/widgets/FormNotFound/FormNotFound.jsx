@@ -1,5 +1,7 @@
+import NotFound from "@/pages/NotFound/NotFound";
+
 function FormNotFound() {
-  return <div></div>;
+  return <NotFound />;
 }
 
 export default FormNotFound;
