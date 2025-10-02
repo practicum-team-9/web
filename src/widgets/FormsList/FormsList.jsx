@@ -1,7 +1,6 @@
 import React from "react";
 import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
 import ImageBottom from '../../assets/images/img-bottom.svg';
-import {yandexFormLink, telegramLink} from "../../assets/constants";
 import "./FormsList.css";
 
 function FormsList() {
@@ -13,7 +12,7 @@ function FormsList() {
             <h1 className="title title_big">Заполните анкету</h1>
             <div className="form-list">
                     <a className="button-link"
-                       href={yandexFormLink}
+                       href=""
                        target='_blank'
                        title="Заявка на содействие в трудоустройстве">
                         <CustomButton
@@ -24,7 +23,7 @@ function FormsList() {
                         </CustomButton>
                     </a>
                     <a className="button-link"
-                       href={"http://localhost:5173/landing"}
+                       href=""
                        target='_blank'
                        title="Консультация по трудоустройству">
                         <CustomButton

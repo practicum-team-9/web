@@ -3,11 +3,10 @@ import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
 import ImageTop from '../../assets/images/img-top.svg';
 import ImageBottom from '../../assets/images/img-bottom.svg';
 import ImagEyeWhite from '../../assets/images/eye-white.svg';
-import {yandexFormLink, telegramLink} from "../../assets/constants";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
-function Primary() {
+function Primary({form}) {
 
     const [isChecked, setIsChecked] = React.useState(false);
 
@@ -29,7 +28,7 @@ function Primary() {
                 <div className="buttons">
                     <div className="button-area">
                         <a className="button-link"
-                           href={yandexFormLink}
+                           href={form.url}
                            target='_blank'
                            onClick={handleClick}
                            title="Стандартная версия опроса">
@@ -44,7 +43,7 @@ function Primary() {
                     </div>
                     <div className="button-area">
                         <a className="button-link"
-                           href={telegramLink}
+                           href={form.tg_bot_link}
                            target='_blank'
                            onClick={handleClick}
                            title="Версия для незрячих">
