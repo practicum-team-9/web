@@ -3,9 +3,8 @@
     "baseUrl": "src",
     "paths": {
       "@widgets": ["widgets/index.js"],
-      "@/*": ["*"],
-    },
-
+      "@/*": ["*"]
+    }
   },
   "include": ["src/**/*"]
 }
