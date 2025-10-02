@@ -32,11 +32,7 @@ function Primary({ form }) {
             disabled={!isChecked}
             className={"button_light"}
             label="стандартная версия опроса"
-            onClick={() =>
-              handleButtonClick(
-                "https://forms.yandex.ru/cloud/683ea0c790fa7b3a18f38e98/"
-              )
-            }
+            onClick={() => handleButtonClick(form.url)}
           >
             Яндекс форма
           </CustomButton>
@@ -48,11 +44,7 @@ function Primary({ form }) {
             disabled={!isChecked}
             className="button_dark"
             label="Версия для незрячих"
-            onClick={() =>
-              handleButtonClick(
-                "https://forms.yandex.ru/cloud/683ea0c790fa7b3a18f38e98/"
-              )
-            }
+            onClick={() => handleButtonClick(form.tg_bot_url)}
           >
             Телеграм бот
             <img

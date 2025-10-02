@@ -13,7 +13,7 @@ import {
   Box,
   CircularProgress,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TABLE_ROW_DATA } from "@/app/constants";
 
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -46,11 +46,12 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   };
 
   // api calls
-  const handleSaveClick = (id, form) => {
+  const handleSaveClick = (index, id) => {
     setIsPending(true);
     updateForm(id, editedRow)
       .then((res) => {
         setIsPending(false);
+        setForms((prev) => [...prev.map((i) => (i.id === id ? res.data : i))]);
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +64,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
     setIsPending(true);
     addForm(newForm)
       .then((res) => {
-        setForms((prev) => [...prev, newForm]);
+        setForms((prev) => [...prev, res.data]);
         setNewForm("");
         setIsPending(false);
       })
@@ -132,7 +133,6 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
           <TableBody>
             {forms.length > 0 ? (
               forms.map((row, rowIndex) => {
-                const cells = Object.entries(row);
                 let arr = [];
                 for (let index = 0; index < TABLE_ROW_DATA.length; index++) {
                   arr.push([
@@ -182,7 +182,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
                       {editIndex === rowIndex ? (
                         <IconButton
                           aria-label="save"
-                          onClick={() => handleSaveClick(row.id)}
+                          onClick={() => handleSaveClick(editIndex, row.id)}
                           disabled={isButtonDisabled(editedRow)}
                         >
                           <CheckIcon />
@@ -218,7 +218,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
               </TableRow>
             )}
             <TableRow>
-              {TABLE_ROW_DATA.map((cell, index) => {
+              {TABLE_ROW_DATA.slice(0, 2).map((cell, index) => {
                 return (
                   <TableCell
                     key={index}
