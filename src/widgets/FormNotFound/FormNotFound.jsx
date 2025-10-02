@@ -1,5 +1,5 @@
 function FormNotFound() {
-  return <div></div>;
+  return <div>ПУСТО</div>;
 }
 
 export default FormNotFound;
