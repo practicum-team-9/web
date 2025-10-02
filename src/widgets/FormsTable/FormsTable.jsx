@@ -7,7 +7,6 @@ import {
   TableRow,
   TextField,
   Button,
-  Paper,
   Typography,
   IconButton,
   Box,
@@ -24,7 +23,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const [isPending, setIsPending] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
-  const [newForm, setNewForm] = useState("");
+  const [newForm, setNewForm] = useState({ name: "", url: "" });
 
   const handleEditClick = (index) => {
     setEditIndex(index);
@@ -32,7 +31,8 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   };
 
   const isButtonDisabled = (row) => {
-    return row === "";
+    console.log(Object.values(row));
+    return Object.values(row).filter((i) => i.length === 0).length > 0;
   };
 
   const handleChange = (e) => {
@@ -65,7 +65,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
     addForm(newForm)
       .then((res) => {
         setForms((prev) => [...prev, res.data]);
-        setNewForm("");
+        setNewForm({ name: "", url: "" });
         setIsPending(false);
       })
       .catch((err) => {
@@ -88,7 +88,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   };
 
   return (
-    <Paper sx={{ padding: "30px", borderRadius: "46px" }}>
+    <>
       <Typography
         variant="h4"
         gutterBottom
@@ -245,7 +245,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
                   variant="contained"
                   onClick={handleAddRow}
                   disabled={isButtonDisabled(newForm)}
-                  sx={{ backgroundColor: "black" }}
+                  sx={{ backgroundColor: "black", borderRadius: "48px" }}
                 >
                   Добавить
                 </Button>
@@ -254,7 +254,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </>
   );
 }
 

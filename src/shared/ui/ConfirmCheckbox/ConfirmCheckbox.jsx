@@ -13,12 +13,12 @@ function ConfirmCheckbox({ isChecked, setIsChecked }) {
           type="checkbox"
           className="hidden-checkbox"
           checked={isChecked}
+          onChange={toggleCheckbox}
         />
         <span
           tabIndex={0}
           role="checkbox"
           aria-checked={isChecked}
-          onClick={toggleCheckbox}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();

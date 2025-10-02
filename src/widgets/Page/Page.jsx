@@ -1,8 +1,7 @@
-import React from "react";
 import logo from "../../assets/images/logo-invatur.svg";
-import "./Template.css";
+import "./Page.css";
 
-function Template(props) {
+function Page(props) {
   return (
     <>
       <header>
@@ -13,4 +12,4 @@ function Template(props) {
   );
 }
 
-export default Template;
+export default Page;

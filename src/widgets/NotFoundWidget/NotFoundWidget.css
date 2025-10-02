@@ -1,0 +1,48 @@
+.not-found {
+  display: flex;
+}
+
+.image-container {
+  width: 566px;
+}
+
+.text-conatiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 589px;
+}
+
+.not-found-h {
+  font-size: 50px;
+  text-align: start;
+  margin-top: 0;
+}
+
+.not-found-p {
+  font-size: 24px;
+  text-align: start;
+}
+
+.not-found-a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.not-found-a:hover {
+  color: #444;
+  font-style: bold;
+}
+
+.not-found-a:focus {
+  color: #444;
+  font-style: bold;
+}
+
+@media screen and (max-width: 750px) {
+  .not-found {
+    display: flex;
+    flex-direction: column;
+  }
+}

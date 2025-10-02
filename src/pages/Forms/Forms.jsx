@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Forms.css";
-import FormsList from "@/widgets/FormsList/FormsList.jsx";
-import Template from "@/widgets/Template/Template.jsx";
+import { FormsList } from "@widgets";
 
 function Forms({ getForms }) {
   const [forms, setForms] = useState([]);
@@ -12,11 +10,7 @@ function Forms({ getForms }) {
       .catch((err) => console.log(err));
   }, []);
 
-  return (
-    <Template>
-      <FormsList forms={forms} />
-    </Template>
-  );
+  return <FormsList forms={forms} />;
 }
 
 export default Forms;

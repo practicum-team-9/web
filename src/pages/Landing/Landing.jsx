@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import "./Landing.css";
-import { FormNotFound, Primary, Template } from "@widgets";
+import { NotFoundWidget, Primary } from "@widgets";
 
 function Landing({ getFormById }) {
   const location = useLocation();
@@ -13,13 +12,7 @@ function Landing({ getFormById }) {
       .catch((err) => console.log(err));
   }, []);
 
-  return !form ? (
-    <FormNotFound />
-  ) : (
-    <Template>
-      <Primary form={form} />
-    </Template>
-  );
+  return !form ? <NotFoundWidget /> : <Primary form={form} />;
 }
 
 export default Landing;
