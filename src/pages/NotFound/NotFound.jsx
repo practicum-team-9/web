@@ -15,8 +15,9 @@ function NotFound() {
                     <img src={image404} alt="Страница с ошибкой 404" />
                 </div>
                 <div className="text-container"> 
-                    <h2 className="not-found-h">Ой, а такой страницы нет!</h2>
-                    <p className="not-found-p">К сожалению такой страницы не существует. <br/>Вы можете вернуться на <a className="not-found-a" href='/choose-form'>страницу выбора форм</a></p>
+                    <h2 className="not-found-h">Ошибка!</h2>
+                    <p className="not-found-p">К сожалению такой страницы не существует. </p>
+                    <p className="not-found-p">Вы можете вернуться на <a className="not-found-a" href='/choose-form'>страницу выбора форм</a></p>
                 </div>
             </div>
             <img
