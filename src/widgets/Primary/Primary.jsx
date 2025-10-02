@@ -1,69 +1,72 @@
 import React from "react";
 import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
-import ImageTop from '../../assets/images/img-top.svg';
-import ImageBottom from '../../assets/images/img-bottom.svg';
-import ImagEyeWhite from '../../assets/images/eye-white.svg';
+import ImageTop from "../../assets/images/img-top.svg";
+import ImageBottom from "../../assets/images/img-bottom.svg";
+import ImagEyeWhite from "../../assets/images/eye-white.svg";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
-function Primary({form}) {
+function Primary({ form }) {
+  const [isChecked, setIsChecked] = React.useState(false);
 
-    const [isChecked, setIsChecked] = React.useState(false);
+  function handleButtonClick(link) {
+    window.location.href = link;
+  }
 
-    function handleClick(event) {
-        if (!isChecked) {
-            event.preventDefault();
-        }
-    }
+  return (
+    <main className="primary">
+      <img src={ImageTop} className="img-top" alt="Логотип сердце в руках" />
+      <img
+        src={ImageBottom}
+        className="img-bottom"
+        alt="Логотип коробка в руках"
+      />
+      <h1 className="title title_big">
+        Для прохождения анкетирования выберите «Я&nbsp;Форму» или
+        <span className="no-wrap">&nbsp;</span>
+        <span className="wrap"> </span>«Телеграм&nbsp;бот»
+      </h1>
+      <div className="buttons">
+        <div className="button-area">
+          <CustomButton
+            disabled={!isChecked}
+            className={"button_light"}
+            label="стандартная версия опроса"
+            onClick={() =>
+              handleButtonClick(
+                "https://forms.yandex.ru/cloud/683ea0c790fa7b3a18f38e98/"
+              )
+            }
+          >
+            Яндекс форма
+          </CustomButton>
 
-    return (
-        <main className="primary">
-                <img src={ImageTop}
-                     className="img-top" alt="Логотип сердце в руках"/>
-                <img src={ImageBottom}
-                     className="img-bottom" alt="Логотип коробка в руках"/>
-                <h1 className="title title_big">Для прохождения анкетирования выберите «Я&nbsp;Форму»  или
-                    <span className="no-wrap">&nbsp;</span>
-                    <span className="wrap"> </span>«Телеграм&nbsp;бот»</h1>
-                <div className="buttons">
-                    <div className="button-area">
-                        <a className="button-link"
-                           href={form.url}
-                           target='_blank'
-                           onClick={handleClick}
-                           title="Стандартная версия опроса">
-                            <CustomButton
-                                disabled={!isChecked}
-                                className={'button_light'}
-                                label={'стандартная версия опроса'}
-                            >Яндекс форма
-                            </CustomButton>
-                        </a>
-                        <p className="button-label">Стандартная версия опроса</p>
-                    </div>
-                    <div className="button-area">
-                        <a className="button-link"
-                           href={form.tg_bot_link}
-                           target='_blank'
-                           onClick={handleClick}
-                           title="Версия для незрячих">
-                            <CustomButton
-                                disabled={!isChecked}
-                                className={'button_dark'}
-                                label={'Версия для незрячих'}
-                            >Телеграм бот
-                                <img src={ImagEyeWhite} className="button-image" alt="версия для незрячих"/>
-                            </CustomButton>
-                        </a>
-                        <p className="button-label">Версия для незрячих</p>
-                    </div>
-                </div>
-                <ConfirmCheckbox
-                    isChecked={isChecked}
-                    setIsChecked={setIsChecked}
-                />
-            </main>
-    );
+          <p className="button-label">Стандартная версия опроса</p>
+        </div>
+        <div className="button-area">
+          <CustomButton
+            disabled={!isChecked}
+            className="button_dark"
+            label="Версия для незрячих"
+            onClick={() =>
+              handleButtonClick(
+                "https://forms.yandex.ru/cloud/683ea0c790fa7b3a18f38e98/"
+              )
+            }
+          >
+            Телеграм бот
+            <img
+              src={ImagEyeWhite}
+              className="button-image"
+              alt="версия для незрячих"
+            />
+          </CustomButton>
+          <p className="button-label">Версия для незрячих</p>
+        </div>
+      </div>
+      <ConfirmCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
+    </main>
+  );
 }
 
 export default Primary;

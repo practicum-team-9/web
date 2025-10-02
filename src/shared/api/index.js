@@ -14,25 +14,33 @@ const makeRequest = (url, method, data) => {
   });
 };
 
-export const getForms = (search = "") => {
+const getForms = (search = "") => {
   return makeRequest(
     `/v1/forms/get-all-forms/${search ? `?search=${search}` : ""}`,
     "GET"
   );
 };
 
-export const addForm = () => {
-  return makeRequest("/v1/forms/add-form/", "POST");
+const addForm = (form) => {
+  return makeRequest("/v1/forms/add-form/", "POST", form);
 };
 
-export const deleteForm = (id) => {
+const deleteForm = (id) => {
   return makeRequest(`/v1/forms/delete-form/${id}`, "DELETE");
 };
 
-export const updateForm = (id) => {
-  return makeRequest(`/v1/forms/update-form/${id}`, "PUT");
+const updateForm = (id, form) => {
+  return makeRequest(`/v1/forms/update-form/${id}`, "PUT", form);
 };
 
-export const getFormById = (id) => {
+const getFormById = (id) => {
   return makeRequest(`/v1/forms/get-form/${id}`, "GET");
+};
+
+export const api = {
+  getFormById,
+  getForms,
+  addForm,
+  deleteForm,
+  updateForm,
 };

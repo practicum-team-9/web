@@ -1,12 +1,11 @@
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { getFormById } from "@/shared/api/index.js";
 import "./Landing.css";
 
 import Primary from "@/widgets/Primary/Primary.jsx";
 import Template from "@/widgets/Template/Template.jsx";
 
-function Landing() {
+function Landing({ getFormById }) {
   const location = useLocation();
   const [form, setForm] = useState(null);
 
@@ -16,7 +15,7 @@ function Landing() {
       .catch((err) => console.log(err));
   }, []);
 
-  return !form ? (
+  return form ? (
     <div className="form-not-found">
       <h1>Формы не существует</h1>
     </div>
