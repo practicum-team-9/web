@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://51.250.113.76";
+const BASE_URL = "https://foodgramproject.duckdns.org";
 
 const makeRequest = (url, method, data) => {
   return axios({
