@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://51.250.113.76:8001";
+const BASE_URL = "https://51.250.113.76:8001";
 
 const makeRequest = (url, method, data) => {
   return axios({
