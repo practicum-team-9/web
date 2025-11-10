@@ -11,7 +11,6 @@ function App() {
   return (
     <Page>
       <Routes>
-        <Route path="*" element={<NotFound />} />
         <Route
           path="/quiz/:id"
           element={<Landing getFormById={api.getFormById} />}
@@ -31,6 +30,7 @@ function App() {
           path="/choose-form"
           element={<Forms getForms={api.getForms} />}
         />
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </Page>
   );
