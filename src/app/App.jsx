@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Landing from "../pages/Landing/Landing.jsx";
 import Admin from "../pages/Admin/Admin.jsx";
 import Forms from "../pages/Forms/Forms.jsx";
@@ -16,7 +16,7 @@ function App() {
     const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem('token');
 
         if (!token) {
             setAuthorized(false);
@@ -46,6 +46,7 @@ function App() {
           element={
             authorized ? (
             <Admin
+              setLoggedIn
               getForms={api.getForms}
               addForm={api.addForm}
               updateForm={api.updateForm}
@@ -61,7 +62,7 @@ function App() {
         />
           <Route
               path="/login"
-              element={authorized ? <Navigate to="/admin" replace /> : <Login />}
+              element={authorized ? <Navigate to="/admin" replace /> : <Login  setAuthorized />}
           />
           <Route path="*" element={<NotFound />} />
       </Routes>

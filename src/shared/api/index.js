@@ -47,11 +47,11 @@ const getFormById = (id) => {
   return makeRequest(`/v1/forms/get-form/${id}`, "GET");
 };
 
-const loginUser = (username, password) => {
+const loginUser = (data) => {
   return makeRequest(
       `/v1/auth/login`,
       "POST",
-      { username, password }
+      data
   );
 };
 

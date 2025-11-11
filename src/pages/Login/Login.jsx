@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { TextField, Button, Box } from '@mui/material';
+import React, { useState } from "react";
+import { TextField, Button, Box, Typography } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { api } from "@/shared/api";
+import Loader from "@/shared/ui/Loader/Loader.jsx";
 
-function Login() {
+
+function Login(setAuthorized) {
+
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const [formState, setFormState] = useState({
         username: '',
-        userpass: '',
+        password: '',
     });
-    //loginUser(username, password)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -15,16 +21,31 @@ function Login() {
             [name]: value,
         }));
     };
-
+    if (isLoading) return <Loader />;
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Здесь можно выполнить отправку данных
-        console.log(formState);
+        setIsLoading(true)
+        console.log(formState)
+        api.loginUser(formState)
+            .then((res) => {
+                if (res && res.access_token) {
+                    localStorage.setItem('token', res.access_token);
+                    setAuthorized(true);
+                    navigate("/admin", { replace: true });
+                }
+            }).catch((err) => {
+            console.error("Ошибка входа:", err);
+            setIsLoading(false);
+            alert("Неверный логин или пароль");
+        })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
-
+    if (isLoading) return <Loader />;
     return (
         <Box
-            component="loginForm"
+            component="form"
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -34,18 +55,21 @@ function Login() {
             }}
             onSubmit={handleSubmit}
         >
+            <Typography variant="h5" align="center">
+                Для входа введите имя и пароль
+            </Typography>
             <TextField
                 label="ИМЯ"
                 variant="outlined"
-                name="user-name"
+                name="username"
                 value={formState.username}
                 onChange={handleChange}
             />
             <TextField
                 label="пароль "
                 variant="outlined"
-                name="userpass"
-                value={formState.userpass}
+                name="password"
+                value={formState.password}
                 onChange={handleChange}
             />
             <Button variant="contained" type="submit">

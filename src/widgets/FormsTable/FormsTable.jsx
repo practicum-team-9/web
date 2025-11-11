@@ -13,17 +13,20 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TABLE_ROW_DATA } from "@/app/constants";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 
-function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
+function FormsTable({ forms, setForms, addForm, deleteForm, updateForm,setLoggedIn }) {
   const [isPending, setIsPending] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
   const [newForm, setNewForm] = useState({ name: "", url: "" });
+
+  const navigate = useNavigate();
 
   const handleEditClick = (index) => {
     setEditIndex(index);
@@ -37,6 +40,12 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditedRow({ ...editedRow, [name]: value });
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
+    navigate("/login", { replace: true });
   };
 
   const handleNewRowChange = (e) => {
@@ -253,6 +262,14 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <Button
+          variant="contained"
+          onClick={handleLogOut}
+          disabled={isButtonDisabled(newForm)}
+          sx={{ backgroundColor: "black", borderRadius: "48px" }}
+      >
+        ВЫЙТИ
+      </Button>
     </>
   );
 }
