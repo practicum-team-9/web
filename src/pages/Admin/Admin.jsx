@@ -14,6 +14,7 @@ function Admin(props) {
   return (
     <FormsTable
       forms={forms}
+      setLoggedIn
       setForms={setForms}
       addForm={props.addForm}
       updateForm={props.updateForm}
