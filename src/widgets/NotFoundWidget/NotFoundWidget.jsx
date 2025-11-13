@@ -1,5 +1,6 @@
 import image404 from "../../assets/images/404.png";
 import ImageBottom from "../../assets/images/img-bottom.svg";
+import './NotFoundWidget.css'
 
 function NotFoundWidget() {
   return (
