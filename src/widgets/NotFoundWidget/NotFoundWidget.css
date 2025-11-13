@@ -1,12 +1,18 @@
 .not-found {
   display: flex;
+  flex-direction: row;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
 }
 
 .image-container {
   width: 566px;
 }
 
-.text-conatiner {
+.text-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -44,5 +50,39 @@
   .not-found {
     display: flex;
     flex-direction: column;
+  }
+  .image-container {
+    width: 100%;
+  }
+  .text-container {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .not-found-h {
+    font-size: 28px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .not-found-p {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .not-found {
+    display: flex;
+    flex-direction: column;
+  }
+  .image-container {
+    min-width: 220px;
+    height: auto;
+    width: 100%;
+  }
+  .text-container {
+    width: 100%;
   }
 }
