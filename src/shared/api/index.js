@@ -1,6 +1,20 @@
-import axios from "axios";
+import axios from "axios";import AxiosMockAdapter from 'axios-mock-adapter';
+//Mock adapter
+
+// This sets the mock adapter on the default instance
+const mock = new AxiosMockAdapter(axios);
+
+// Mock any GET request to /users
+// arguments for reply are (status, data, headers)
+//mock.onGet(BASE_URL+'/v1/forms/get-all-forms/').reply(200, {
+
 
 const BASE_URL = "https://foodgramproject.duckdns.org";
+
+mock.onGet(BASE_URL+'/v1/forms/get-all-forms/').reply(200, [
+  { id: '683ea0c790fa7b3a18f38e98', name: "Заявка на содействие в трудоустройстве" }, 
+  { id: '6867a04949af470015909103', name: "Консультация по трудоустройству" }
+]);
 
 const makeRequest = (url, method, data) => {
   return axios({

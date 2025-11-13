@@ -57,7 +57,7 @@ function App() {
           }
         />
         <Route
-          path="/choose-form"
+          path="/"
           element={<Forms getForms={api.getForms} />}
         />
           <Route
