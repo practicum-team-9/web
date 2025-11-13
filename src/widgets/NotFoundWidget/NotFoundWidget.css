@@ -15,20 +15,18 @@
 .text-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 589px;
+  text-align: justify;
+  max-width: 589px;
+  width: 100%;
 }
 
 .not-found-h {
   font-size: 50px;
-  text-align: start;
   margin-top: 0;
 }
 
 .not-found-p {
   font-size: 24px;
-  text-align: start;
 }
 
 .not-found-a {

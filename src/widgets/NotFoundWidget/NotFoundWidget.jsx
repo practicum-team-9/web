@@ -22,6 +22,7 @@ function NotFoundWidget() {
                 </a>
               </p>
             </div>
+            <div></div>
           </div>
         </div>
         <img
