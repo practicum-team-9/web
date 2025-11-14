@@ -28,8 +28,8 @@ function Login(setAuthorized) {
         console.log(formState)
         api.loginUser(formState)
             .then((res) => {
-                if (res && res.access_token) {
-                    localStorage.setItem('token', res.access_token);
+                if (res && res.data.access_token) {
+                    localStorage.setItem('token', res.data.access_token);
                     setAuthorized(true);
                     navigate("/admin", { replace: true });
                 }
