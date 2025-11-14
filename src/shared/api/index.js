@@ -1,3 +1,4 @@
+import { Password } from "@mui/icons-material";
 import axios from "axios";import AxiosMockAdapter from 'axios-mock-adapter';
 //Mock adapter
 
@@ -15,6 +16,8 @@ mock.onGet(BASE_URL+'/v1/forms/get-all-forms/').reply(200, [
   { id: '683ea0c790fa7b3a18f38e98', name: "Заявка на содействие в трудоустройстве" }, 
   { id: '6867a04949af470015909103', name: "Консультация по трудоустройству" }
 ]);
+
+mock.onPost(BASE_URL + '/v1/auth/login', {username: 'username', password: 'password' }).reply(200, {'access_token': 'token', 'token_type': 'Bearer'})
 
 const makeRequest = (url, method, data) => {
   return axios({
