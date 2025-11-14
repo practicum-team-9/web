@@ -12,12 +12,30 @@ const mock = new AxiosMockAdapter(axios);
 
 const BASE_URL = "https://foodgramproject.duckdns.org";
 
+const mockToken = 'MOCK TOKEN!'
+
 mock.onGet(BASE_URL+'/v1/forms/get-all-forms/').reply(200, [
   { id: '683ea0c790fa7b3a18f38e98', name: "Заявка на содействие в трудоустройстве" }, 
   { id: '6867a04949af470015909103', name: "Консультация по трудоустройству" }
 ]);
 
-mock.onPost(BASE_URL + '/v1/auth/login', {username: 'username', password: 'password' }).reply(200, {'access_token': 'token', 'token_type': 'Bearer'})
+mock.onPost(BASE_URL + '/v1/auth/login', {username: 'username', password: 'password' }).reply(200, {'access_token': mockToken, 'token_type': 'Bearer'})
+
+mock.onGet(BASE_URL + "/v1/auth/token").reply((config) => {
+    const authHeader = config.headers.Authorization;
+    
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        const token = authHeader.substring(7);
+        if (token === mockToken) {
+            return [200, { valid: true}];
+        } else {
+            return [403, { message: 'Invalid token' }];
+        }
+    } else {
+        return [401, { message: 'Authorization header missing or malformed' }];
+    }
+
+})
 
 const makeRequest = (url, method, data) => {
   return axios({

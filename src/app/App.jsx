@@ -25,7 +25,7 @@ function App() {
         }
         api.checkToken()
             .then((res) => {
-                setAuthorized(res.valid === true);
+              setAuthorized(res.data.valid === true);
             })
             .catch((err) => {
                 console.error("Ошибка при проверке токена:", err);
