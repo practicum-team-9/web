@@ -5,7 +5,7 @@ import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 
 
-function Login(setAuthorized) {
+function Login(props) {
 
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +30,7 @@ function Login(setAuthorized) {
             .then((res) => {
                 if (res && res.data.access_token) {
                     localStorage.setItem('token', res.data.access_token);
-                    setAuthorized(true);
+                    props.setAuthorizedTrue();
                     navigate("/admin", { replace: true });
                 }
             }).catch((err) => {

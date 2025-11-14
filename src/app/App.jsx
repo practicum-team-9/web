@@ -44,27 +44,26 @@ function App() {
         <Route
           path="/admin"
           element={
-            authorized ? (
+            authorized ? 
             <Admin
               setLoggedIn
               getForms={api.getForms}
               addForm={api.addForm}
               updateForm={api.updateForm}
               deleteForm={api.deleteForm}
-            />) : (
-                <Navigate to="/login" replace />
-          )
+            /> : 
+                <Navigate to="/login" replace />          
           }
         />
         <Route
-          path="/"
+          path="/choose-form"
           element={<Forms getForms={api.getForms} />}
         />
-          <Route
-              path="/login"
-              element={authorized ? <Navigate to="/admin" replace /> : <Login  setAuthorized />}
-          />
-          <Route path="*" element={<NotFound />} />
+        <Route
+            path="/login"
+            element={authorized ? <Navigate to="/admin" replace /> : <Login  setAuthorizedTrue={() => {setAuthorized(true)}} />}
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Page>
   );
