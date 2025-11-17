@@ -20,7 +20,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 
-function FormsTable({ forms, setForms, addForm, deleteForm, updateForm,setLoggedIn }) {
+function FormsTable({ forms, setForms, addForm, deleteForm, updateForm, onLogout }) {
   const [isPending, setIsPending] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
@@ -42,11 +42,6 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm,setLogged
     setEditedRow({ ...editedRow, [name]: value });
   };
 
-  const handleLogOut = () => {
-    localStorage.removeItem('token');
-    setLoggedIn(false);
-    navigate("/login", { replace: true });
-  };
 
   const handleNewRowChange = (e) => {
     const { name, value } = e.target;
@@ -264,7 +259,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm,setLogged
       </TableContainer>
       <Button
           variant="contained"
-          onClick={handleLogOut}
+          onClick={onLogout}
           disabled={isButtonDisabled(newForm)}
           sx={{ backgroundColor: "black", borderRadius: "48px" }}
       >

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { TextField, Button, Box, Typography } from '@mui/material';
-import { useNavigate } from "react-router-dom";
 import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 
 
-function Login(setAuthorized) {
+function Login(onLogin) {
 
-    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [formState, setFormState] = useState({
         username: '',
@@ -21,17 +19,16 @@ function Login(setAuthorized) {
             [name]: value,
         }));
     };
+
     if (isLoading) return <Loader />;
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsLoading(true)
-        console.log(formState)
         api.loginUser(formState)
             .then((res) => {
-                if (res && res.access_token) {
-                    localStorage.setItem('token', res.access_token);
-                    setAuthorized(true);
-                    navigate("/admin", { replace: true });
+                if (res && res.data.access_token) {
+                    onLogin(res.data.access_token)
                 }
             }).catch((err) => {
             console.error("Ошибка входа:", err);
