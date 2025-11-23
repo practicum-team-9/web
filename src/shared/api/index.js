@@ -59,11 +59,8 @@ const makeRequestWithToken = (url, method, data) => {
   });
 };
 
-const getForms = (search = "") => {
-  return makeRequest(
-    `/v1/forms/get-all-forms/${search ? `?search=${search}` : ""}`,
-    "GET"
-  );
+const getForms = () => {
+  return makeRequest('/v1/forms/get-all-forms', 'GET');
 };
 
 const addForm = (form) => {
@@ -91,7 +88,7 @@ const loginUser = (data) => {
 };
 
 const checkToken = () => {
-  return makeRequestWithToken("/v1/auth/token", "GET"); //TODO прерделать путь и логику когда будет ответ от Ильи
+  return makeRequestWithToken("/v1/auth/check_token", "GET");
 };
 
 export const api = {

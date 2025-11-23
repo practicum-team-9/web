@@ -1,4 +1,5 @@
 import "./App.css";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Landing from "../pages/Landing/Landing.jsx";
@@ -12,6 +13,7 @@ import Loader from "@/shared/ui/Loader/Loader.jsx";
 
 function App() {
 
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const [authorized, setAuthorized] = useState(false);
 
@@ -19,21 +21,41 @@ function App() {
         const token = localStorage.getItem('token');
 
         if (!token) {
-            setAuthorized(false);
             setIsLoading(false);
             return;
         }
         api.checkToken()
             .then((res) => {
-              setAuthorized(res.data.valid === true);
+                if (res.data.valid) {
+                    setAuthorized(true);
+                } else {
+                    localStorage.removeItem("token");
+                }
             })
-            .catch((err) => {
-                console.error("Ошибка при проверке токена:", err);
-                setAuthorized(false);
+            .catch(() => {
                 localStorage.removeItem("token");
-            }).finally(() => setIsLoading(false));;
+                console.error("Ошибка при проверке токена:", err);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, []);
+
+    const onLogin = (token) => {
+        localStorage.setItem("token", token);
+        setAuthorized(true);
+        navigate("/admin", { replace: true });
+    };
+
+
+    const onLogout = () => {
+        localStorage.removeItem('token');
+        setAuthorized(false);
+        navigate("/login", { replace: true });
+    };
+
     if (isLoading) return <Loader />;
+
   return (
     <Page>
       <Routes>
@@ -46,7 +68,7 @@ function App() {
           element={
             authorized ? 
             <Admin
-              setLoggedIn
+                onLogout={onLogout}
               getForms={api.getForms}
               addForm={api.addForm}
               updateForm={api.updateForm}
@@ -59,11 +81,11 @@ function App() {
           path="/choose-form"
           element={<Forms getForms={api.getForms} />}
         />
-        <Route
-            path="/login"
-            element={authorized ? <Navigate to="/admin" replace /> : <Login  setAuthorizedTrue={() => {setAuthorized(true)}} />}
-        />
-        <Route path="*" element={<NotFound />} />
+          <Route
+              path="/login"
+              element={authorized ? <Navigate to="/admin" replace /> : <Login  onLogin={onLogin} />}
+          />
+          <Route path="*" element={<NotFound />} />
       </Routes>
     </Page>
   );

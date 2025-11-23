@@ -14,7 +14,7 @@ function Admin(props) {
   return (
     <FormsTable
       forms={forms}
-      setLoggedIn
+      onLogout={props.onLogout}
       setForms={setForms}
       addForm={props.addForm}
       updateForm={props.updateForm}
