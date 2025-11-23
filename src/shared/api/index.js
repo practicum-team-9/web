@@ -14,7 +14,7 @@ const BASE_URL = "https://foodgramproject.duckdns.org";
 
 const mockToken = 'MOCK TOKEN!'
 
-mock.onGet(BASE_URL+'/v1/forms/get-all-forms/').reply(200, [
+mock.onGet(BASE_URL+'/v1/forms/get-all-forms').reply(200, [
   { id: '683ea0c790fa7b3a18f38e98', name: "Заявка на содействие в трудоустройстве" }, 
   { id: '6867a04949af470015909103', name: "Консультация по трудоустройству" }
 ]);
