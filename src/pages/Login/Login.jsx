@@ -5,7 +5,7 @@ import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 
 
-function Login(setAuthorized) {
+function Login(props) {
 
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -28,9 +28,9 @@ function Login(setAuthorized) {
         console.log(formState)
         api.loginUser(formState)
             .then((res) => {
-                if (res && res.access_token) {
-                    localStorage.setItem('token', res.access_token);
-                    setAuthorized(true);
+                if (res && res.data.access_token) {
+                    localStorage.setItem('token', res.data.access_token);
+                    props.setAuthorizedTrue();
                     navigate("/admin", { replace: true });
                 }
             }).catch((err) => {
