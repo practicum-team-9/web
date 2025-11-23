@@ -66,16 +66,15 @@ function App() {
         <Route
           path="/admin"
           element={
-            authorized ? (
+            authorized ? 
             <Admin
                 onLogout={onLogout}
               getForms={api.getForms}
               addForm={api.addForm}
               updateForm={api.updateForm}
               deleteForm={api.deleteForm}
-            />) : (
-                <Navigate to="/login" replace />
-          )
+            /> : 
+                <Navigate to="/login" replace />          
           }
         />
         <Route
