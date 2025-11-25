@@ -1,0 +1,34 @@
+---
+name: Prod Deploy
+on:
+  push:
+    branches: [main, devops/test-deploy-main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      CI_BASE_URL: ${{ vars.BASE_URL }}
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v3
+
+      - name: Install npm
+        run: |
+          sudo apt install nodejs npm -y
+          npm ci
+
+      - name: Build dist folder
+        run: |
+          npm run build
+
+      - name: Copy dist to dev folder on server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ vars.SSH_DEPLOY_HOST }}
+          username: ${{ secrets.SSH_DEPLOY_USER }}
+          key: ${{ secrets.SSH_DEPLOY_KEY }}
+          overwrite: true
+          source: 'dist'
+          target: '~/prod-frontend/'
+
