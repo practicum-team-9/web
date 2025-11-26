@@ -17,7 +17,7 @@ const makeRequest = (url, method, data) => {
 };
 
 const makeRequestWithToken = (url, method, data) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("access_token");
 
   return axios({
     url: BASE_URL + url,
