@@ -1,8 +1,8 @@
 import React from "react";
-import { NotFoundWidget } from "@widgets";
+import ExtensionsWidget from "@/widgets/ExtensionsWidget/ExtensionsWidget";
 
-function NotFound() {
-  return <NotFoundWidget />;
+function ExtensionPage() {
+  return <ExtensionsWidget />;
 }
 
-export default NotFound;
+export default ExtensionPage;
