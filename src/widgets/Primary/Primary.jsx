@@ -3,6 +3,7 @@ import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
 import ImageTop from "../../assets/images/img-top.svg";
 import ImageBottom from "../../assets/images/img-bottom.svg";
 import ImagEyeWhite from "../../assets/images/eye-white.svg";
+import extensionsLogo from "../../assets/images/logo.svg";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
@@ -63,12 +64,11 @@ function Primary({ form }) {
           >
             Расширение
             <img
-              src={ImagEyeWhite}
+              src={extensionsLogo}
               className="button-image"
               alt="Расширение"
             />
           </CustomButton>
-
           <p className="button-label">YaForms Accessibility</p>
         </div>
       </div>
