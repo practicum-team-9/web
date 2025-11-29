@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function ExtensionsWidget() {
   const navigate = useNavigate();
   const handleClick = (path) => {
-    console.log('click')
+    // console.log('click')
     navigate(path); // Navigate to the desired route
   }
 

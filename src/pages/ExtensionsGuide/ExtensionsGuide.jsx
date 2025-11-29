@@ -1,8 +1,8 @@
 import React from "react";
-import ExtensionsWidget from "@/widgets/ExtensionsWidget/ExtensionsWidget";
+import ExtensionInstruction from "@/widgets/ExtesionInstruction/ExtensionInstruction";
 
-function ExtensionPage() {
-  return <ExtensionsWidget />;
+function ExtensionGuide() {
+  return <ExtensionInstruction />;
 }
 
-export default ExtensionPage;
+export default ExtensionGuide;

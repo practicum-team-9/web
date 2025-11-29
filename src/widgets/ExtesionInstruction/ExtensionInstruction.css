@@ -1,0 +1,6 @@
+.not-found {
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}

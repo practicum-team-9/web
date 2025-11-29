@@ -11,6 +11,7 @@ import { Page } from "@widgets";
 import Login from  "../pages/Login/Login.jsx";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 import ExtensionPage from "@/pages/ExtensionPage/ExtensionPage";
+import ExtensionGuide from "@/pages/ExtensionsGuide/ExtensionsGuide";
 
 function App() {
 
@@ -86,9 +87,9 @@ function App() {
               path="/login"
               element={authorized ? <Navigate to="/admin" replace /> : <Login  onLogin={onLogin} />}
           />
+          <Route path="/extensions/ybrowser" element={<ExtensionGuide />} />
+          <Route path="/extensions/gchrome" element={<ExtensionGuide />} />
           <Route path="/extensions" element={<ExtensionPage />} />
-          <Route path="/extensions/ybrowser" element={<ExtensionPage />} />
-          <Route path="/extensions/gchrome" element={<ExtensionPage />} />
           <Route path="*" element={<NotFound />} />
       </Routes>
     </Page>
