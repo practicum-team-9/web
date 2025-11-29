@@ -50,11 +50,6 @@ function Primary({ form }) {
             onClick={() => handleButtonClick(form.tg_bot_url)}
           >
             Телеграм бот
-            <img
-              src={ImagEyeWhite}
-              className="button-image"
-              alt="версия для незрячих"
-            />
           </CustomButton>
           <p className="button-label">Версия для незрячих</p>
         </div>
@@ -67,9 +62,14 @@ function Primary({ form }) {
             }}
           >
             Расширение
+            <img
+              src={ImagEyeWhite}
+              className="button-image"
+              alt="Расширение"
+            />
           </CustomButton>
 
-          <p className="button-label">Стандартная версия опроса</p>
+          <p className="button-label">YaForms Accessibility</p>
         </div>
       </div>
       <ConfirmCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
