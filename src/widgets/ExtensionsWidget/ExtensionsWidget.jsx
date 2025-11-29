@@ -8,10 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 function ExtensionsWidget() {
   const navigate = useNavigate();
-  const handleClick = (event) => {
+  const handleClick = (path) => {
     console.log('click')
-    // event.preventDefault(); // Prevent default anchor behavior
-    // navigate('/choose-form'); // Navigate to the desired route
+    navigate(path); // Navigate to the desired route
   }
 
   return (
@@ -27,8 +26,7 @@ function ExtensionsWidget() {
               <div className="button-area">
                 <CustomButton
                   className={"button_light"}
-                  label="стандартная версия опроса"
-                  onClick={handleClick}
+                  onClick={()=> handleClick('/extensions/ybrowser')}
                 >
                   <img
                     src={yandexBrowserIcon}
@@ -41,7 +39,7 @@ function ExtensionsWidget() {
               <div className="button-area">
                 <CustomButton
                   className="button_light"
-                  onClick={handleClick}
+                  onClick={()=> handleClick('/extensions/gchrome')}
                 >
                   <img
                     src={googleChromeIcon}

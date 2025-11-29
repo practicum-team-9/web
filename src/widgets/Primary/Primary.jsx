@@ -6,8 +6,11 @@ import ImagEyeWhite from "../../assets/images/eye-white.svg";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
+import { useNavigate } from 'react-router-dom';
+
 function Primary({ form }) {
   const [isChecked, setIsChecked] = React.useState(false);
+  const navigate = useNavigate();
 
   function handleButtonClick(link) {
     window.location.href = link;
@@ -54,6 +57,19 @@ function Primary({ form }) {
             />
           </CustomButton>
           <p className="button-label">Версия для незрячих</p>
+        </div>
+        <div className="button-area">
+          <CustomButton
+            className={"button_light"}
+            label="Расширение"
+            onClick={() => {
+              navigate('/extensions/')
+            }}
+          >
+            Расширение
+          </CustomButton>
+
+          <p className="button-label">Стандартная версия опроса</p>
         </div>
       </div>
       <ConfirmCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
