@@ -21,6 +21,7 @@ function App() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+        console.log(token)
 
         if (!token) {
             setIsLoading(false);
@@ -34,7 +35,7 @@ function App() {
                     localStorage.removeItem("token");
                 }
             })
-            .catch(() => {
+            .catch((err) => {
                 localStorage.removeItem("token");
                 console.error("Ошибка при проверке токена:", err);
             })
@@ -70,7 +71,7 @@ function App() {
           element={
             authorized ? 
             <Admin
-                onLogout={onLogout}
+              onLogout={onLogout}
               getForms={api.getForms}
               addForm={api.addForm}
               updateForm={api.updateForm}
