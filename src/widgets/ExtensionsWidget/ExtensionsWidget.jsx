@@ -2,6 +2,7 @@ import extensionsImage from "../../assets/images/extensionsImg.png";
 import yandexBrowserIcon from "../../assets/images/YandexBrowserIcon.png";
 import googleChromeIcon from "../../assets/images/GoogleChromeIcon.png";
 import CustomButton from "@/shared/ui/CustomButton/CustomButton";
+import packagedExtension from "../../assets/extension/yaformsaccessibilityext-1.0.0-chrome.zip"
 import './ExtensionsWidget.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -9,8 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function ExtensionsWidget() {
   const navigate = useNavigate();
   const handleClick = (path) => {
-    // console.log('click')
-    navigate(path); // Navigate to the desired route
+    navigate(path);
   }
 
   return (
@@ -24,7 +24,7 @@ function ExtensionsWidget() {
             <h3 className="not-found-h2">Выберите свой бразуер</h3>
             <div className="buttons">
               <div className="button-area">
-                <a href={yandexBrowserIcon} download={'YandexBrowserIcon.png'}>
+                <a href={packagedExtension} download={'YaFormsAccessibility.zip'}>
                   <CustomButton
                     className={"button_light"}
                     onClick={()=> handleClick('/extensions/ybrowser')}
@@ -39,7 +39,7 @@ function ExtensionsWidget() {
                 </a>
               </div>
               <div className="button-area">
-                <a href={googleChromeIcon} download={'GoogleChromeIcon.png'}>
+                <a href={packagedExtension} download={'YaFormsAccessibility.zip'}>
                   <CustomButton
                     className="button_light"
                     onClick={()=> handleClick('/extensions/gchrome')}

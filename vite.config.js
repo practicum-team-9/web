@@ -16,4 +16,5 @@ export default defineConfig({
       "@ui": resolve(__dirname, "src/shared/ui"),
     },
   },
+  assetsInclude: ['**/*.zip']
 });
