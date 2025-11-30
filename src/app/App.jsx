@@ -18,7 +18,7 @@ function App() {
     const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('access_token');
 
         if (!token) {
             setIsLoading(false);
@@ -30,11 +30,11 @@ function App() {
                 if (res.data.valid) {
                     setAuthorized(true);
                 } else {
-                    localStorage.removeItem("token");
+                    localStorage.removeItem("access_token");
                 }
             })
             .catch((err) => {
-                localStorage.removeItem("token");
+                localStorage.removeItem("access_token");
                 console.error("Ошибка при проверке токена:");
                 console.log(err)
             })
@@ -51,7 +51,7 @@ function App() {
 
 
     const onLogout = () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('access_token');
         setAuthorized(false);
         navigate("/login", { replace: true });
     };
