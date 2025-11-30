@@ -4,7 +4,7 @@ import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 
 
-function Login(onLogin) {
+function Login({ onLogin }) {
 
     const [isLoading, setIsLoading] = useState(false);
     const [formState, setFormState] = useState({
