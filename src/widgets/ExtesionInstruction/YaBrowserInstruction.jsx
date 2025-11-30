@@ -1,4 +1,3 @@
-import extensionsImage from "../../assets/images/extensionsImg.png";
 import yandexBrowserIcon from "../../assets/images/YandexBrowserIcon.png";
 
 import step1 from "../../assets/images/step1.png";
@@ -7,9 +6,7 @@ import step3 from "../../assets/images/step3.png";
 import step4 from "../../assets/images/step4.png";
 import step5 from "../../assets/images/step5.png";
 
-// import googleChromeIcon from "../../assets/images/GoogleChromeIcon.png";
 import './ExtensionInstruction.css'
-// import { useNavigate } from 'react-router-dom';
 
 
 function YaBrowserInstruction() {
