@@ -1,0 +1,94 @@
+.not-found {
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.instructions-container {
+  padding: 34px;
+  max-width: 1392px;
+  margin: 0 auto;
+}
+
+.instructions-header {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+}
+
+.instructions-h1 {
+  font-size: 48px;
+  line-height: 100%;
+  display: inline-block;
+  margin: 0;
+}
+
+.instructions-logo {
+  display: flex;
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+}
+
+.logo-img {
+  width: 100%;
+}
+
+.instructions-step {
+  width: 100%;
+  text-align: start;
+}
+
+.step-img {
+  max-width: 100%
+}
+
+.step-text {
+  font-size: 24px;
+}
+
+
+@media screen and (max-width: 928px) { 
+  .instructions-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .instructions-h1 {
+    font-size: 36px;
+  }
+
+  .step-text {
+    font-size: 14px;
+  }
+
+  .instructions-logo {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+@media screen and (max-width: 750px) { 
+
+
+  .instructions-container {
+    padding: 24px;
+    max-width: 595px;
+    margin: 0 auto;
+  }
+
+  .instructions-h1 {
+    font-size: 28px;
+  }
+
+  .instructions-logo {
+    height: 28px;
+    width: 28px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+}
