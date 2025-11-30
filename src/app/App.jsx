@@ -87,8 +87,8 @@ function App() {
               path="/login"
               element={authorized ? <Navigate to="/admin" replace /> : <Login  onLogin={onLogin} />}
           />
-          <Route path="/extensions/ybrowser" element={<ExtensionGuide />} />
-          <Route path="/extensions/gchrome" element={<ExtensionGuide />} />
+          <Route path="/extensions/ybrowser" element={<ExtensionGuide browser='YandexBrowser' />} />
+          <Route path="/extensions/gchrome" element={<ExtensionGuide browser='GoogleChrome'/>} />
           <Route path="/extensions" element={<ExtensionPage />} />
           <Route path="*" element={<NotFound />} />
       </Routes>

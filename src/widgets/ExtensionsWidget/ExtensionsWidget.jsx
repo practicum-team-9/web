@@ -24,30 +24,34 @@ function ExtensionsWidget() {
             <h3 className="not-found-h2">Выберите свой бразуер</h3>
             <div className="buttons">
               <div className="button-area">
-                <CustomButton
-                  className={"button_light"}
-                  onClick={()=> handleClick('/extensions/ybrowser')}
-                >
-                  <img
-                    src={yandexBrowserIcon}
-                    className="button-image"
-                    alt="Иконка Яндекс Бразуер"
-                  />
-                  Яндекс Браузер
-                </CustomButton>
+                <a href={yandexBrowserIcon} download={'YandexBrowserIcon.png'}>
+                  <CustomButton
+                    className={"button_light"}
+                    onClick={()=> handleClick('/extensions/ybrowser')}
+                  >
+                    <img
+                      src={yandexBrowserIcon}
+                      className="button-image"
+                      alt="Иконка Яндекс Бразуер"
+                    />
+                    Яндекс Браузер
+                  </CustomButton>
+                </a>
               </div>
               <div className="button-area">
-                <CustomButton
-                  className="button_light"
-                  onClick={()=> handleClick('/extensions/gchrome')}
-                >
-                  <img
-                    src={googleChromeIcon}
-                    className="button-image"
-                    alt="Иконка Google Chrome"
-                  />
-                  Google Chrome
-                </CustomButton>
+                <a href={googleChromeIcon} download={'GoogleChromeIcon.png'}>
+                  <CustomButton
+                    className="button_light"
+                    onClick={()=> handleClick('/extensions/gchrome')}
+                  >
+                    <img
+                      src={googleChromeIcon}
+                      className="button-image"
+                      alt="Иконка Google Chrome"
+                    />
+                    Google Chrome
+                  </CustomButton>
+                </a>
               </div>
             </div>
           </div>
