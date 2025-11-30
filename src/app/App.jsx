@@ -26,15 +26,17 @@ function App() {
         }
         api.checkToken()
             .then((res) => {
+                console.log(res)
                 if (res.data.valid) {
                     setAuthorized(true);
                 } else {
                     localStorage.removeItem("token");
                 }
             })
-            .catch(() => {
+            .catch((err) => {
                 localStorage.removeItem("token");
-                console.error("Ошибка при проверке токена:", err);
+                console.error("Ошибка при проверке токена:");
+                console.log(err)
             })
             .finally(() => {
                 setIsLoading(false);
@@ -42,7 +44,7 @@ function App() {
     }, []);
 
     const onLogin = (token) => {
-        localStorage.setItem("token", token);
+        localStorage.setItem("access_token", token);
         setAuthorized(true);
         navigate("/admin", { replace: true });
     };

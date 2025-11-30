@@ -18,6 +18,16 @@ const makeRequest = (url, method, data) => {
 
 const makeRequestWithToken = (url, method, data) => {
   const token = localStorage.getItem("access_token");
+  console.log('MAKE REQUEST WITH TOKEN')
+  console.log({
+    url: BASE_URL + url,
+    method: method,
+    data: data,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  })
 
   return axios({
     url: BASE_URL + url,
