@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FormsTable } from "@widgets";
+import { Button, Box } from "@mui/material";
 
 function Admin(props) {
   const [forms, setForms] = useState([]);
@@ -12,14 +13,34 @@ function Admin(props) {
   }, []);
 
   return (
-    <FormsTable
-      forms={forms}
-      onLogout={props.onLogout}
-      setForms={setForms}
-      addForm={props.addForm}
-      updateForm={props.updateForm}
-      deleteForm={props.deleteForm}
-    />
+    <Box
+      component="form"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Button
+        variant="contained"
+        onClick={props.onLogout}
+        sx={{
+          backgroundColor: "black",
+          borderRadius: "48px",
+          alignSelf: "end",
+          fontFamily: "ActayWide, sans-serif"
+        }}
+      >
+        ВЫЙТИ
+      </Button>
+      <FormsTable
+        forms={forms}
+        onLogout={props.onLogout}
+        setForms={setForms}
+        addForm={props.addForm}
+        updateForm={props.updateForm}
+        deleteForm={props.deleteForm}
+      />
+    </Box>
   );
 }
 

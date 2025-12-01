@@ -10,6 +10,8 @@ import { api } from "@/shared/api";
 import { Page } from "@widgets";
 import Login from  "../pages/Login/Login.jsx";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
+import ExtensionPage from "@/pages/ExtensionPage/ExtensionPage";
+import ExtensionGuide from "@/pages/ExtensionsGuide/ExtensionsGuide";
 
 function App() {
 
@@ -18,7 +20,8 @@ function App() {
     const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('token');
+        console.log(token)
 
         if (!token) {
             setIsLoading(false);
@@ -26,17 +29,15 @@ function App() {
         }
         api.checkToken()
             .then((res) => {
-                console.log(res)
                 if (res.data.valid) {
                     setAuthorized(true);
                 } else {
-                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token");
                 }
             })
             .catch((err) => {
-                localStorage.removeItem("access_token");
-                console.error("Ошибка при проверке токена:");
-                console.log(err)
+                localStorage.removeItem("token");
+                console.error("Ошибка при проверке токена:", err);
             })
             .finally(() => {
                 setIsLoading(false);
@@ -44,14 +45,14 @@ function App() {
     }, []);
 
     const onLogin = (token) => {
-        localStorage.setItem("access_token", token);
+        localStorage.setItem("token", token);
         setAuthorized(true);
         navigate("/admin", { replace: true });
     };
 
 
     const onLogout = () => {
-        localStorage.removeItem('access_token');
+        localStorage.removeItem('token');
         setAuthorized(false);
         navigate("/login", { replace: true });
     };
@@ -70,7 +71,7 @@ function App() {
           element={
             authorized ? 
             <Admin
-                onLogout={onLogout}
+              onLogout={onLogout}
               getForms={api.getForms}
               addForm={api.addForm}
               updateForm={api.updateForm}
@@ -87,6 +88,9 @@ function App() {
               path="/login"
               element={authorized ? <Navigate to="/admin" replace /> : <Login  onLogin={onLogin} />}
           />
+          <Route path="/extensions/ybrowser" element={<ExtensionGuide browser='YandexBrowser' />} />
+          <Route path="/extensions/gchrome" element={<ExtensionGuide browser='GoogleChrome'/>} />
+          <Route path="/extensions" element={<ExtensionPage />} />
           <Route path="*" element={<NotFound />} />
       </Routes>
     </Page>

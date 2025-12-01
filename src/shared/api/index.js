@@ -1,36 +1,54 @@
-import { Password } from "@mui/icons-material";
+// import { Password } from "@mui/icons-material";
 import axios from "axios";
+
+// import AxiosMockAdapter from 'axios-mock-adapter';
+//Mock adapter
+
+// This sets the mock adapter on the default instance
+// const mock = new AxiosMockAdapter(axios);
 
 // Mock any GET request to /users
 // arguments for reply are (status, data, headers)
 //mock.onGet(BASE_URL+'/v1/forms/get-all-forms/').reply(200, {
 
+// const mockToken = 'MOCK TOKEN!'
 
-const BASE_URL = "https://invatur.rassokha.pro";
+// mock.onGet(BASE_URL+'/v1/forms/get-all-forms').reply(200, [
+//   { id: '683ea0c790fa7b3a18f38e98', name: "Заявка на содействие в трудоустройстве" }, 
+//   { id: '6867a04949af470015909103', name: "Консультация по трудоустройству" }
+// ]);
+
+// mock.onPost(BASE_URL + '/v1/auth/login', {username: 'username', password: 'password' }).reply(200, {'access_token': mockToken, 'token_type': 'Bearer'})
+
+// mock.onGet(BASE_URL + "/v1/auth/token").reply((config) => {
+//     const authHeader = config.headers.Authorization;
+    
+//     if (authHeader && authHeader.startsWith('Bearer ')) {
+//         const token = authHeader.substring(7);
+//         if (token === mockToken) {
+//             return [200, { valid: true}];
+//         } else {
+//             return [403, { message: 'Invalid token' }];
+//         }
+//     } else {
+//         return [401, { message: 'Authorization header missing or malformed' }];
+//     }
+
+// })
 
 const makeRequest = (url, method, data) => {
   return axios({
-    url: BASE_URL + url,
+    url: import.meta.env.VITE_BASE_URL + url,
     method: method,
     data: data,
   });
 };
 
 const makeRequestWithToken = (url, method, data) => {
-  const token = localStorage.getItem("access_token");
-  // console.log('MAKE REQUEST WITH TOKEN')
-  // console.log({
-  //   url: BASE_URL + url,
-  //   method: method,
-  //   data: data,
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: token ? `Bearer ${token}` : "",
-  //   },
-  // })
+  const token = localStorage.getItem("token");
 
   return axios({
-    url: BASE_URL + url,
+    url: import.meta.env.VITE_BASE_URL + url,
     method: method,
     data: data,
     headers: {

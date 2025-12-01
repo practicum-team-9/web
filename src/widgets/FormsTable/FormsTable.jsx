@@ -13,20 +13,17 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { TABLE_ROW_DATA } from "@/app/constants";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 
-function FormsTable({ forms, setForms, addForm, deleteForm, updateForm, onLogout }) {
+function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const [isPending, setIsPending] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
   const [newForm, setNewForm] = useState({ name: "", url: "" });
-
-  const navigate = useNavigate();
 
   const handleEditClick = (index) => {
     setEditIndex(index);
@@ -41,7 +38,6 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm, onLogout
     const { name, value } = e.target;
     setEditedRow({ ...editedRow, [name]: value });
   };
-
 
   const handleNewRowChange = (e) => {
     const { name, value } = e.target;
@@ -257,14 +253,6 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm, onLogout
           </TableBody>
         </Table>
       </TableContainer>
-      <Button
-          variant="contained"
-          onClick={onLogout}
-          disabled={isButtonDisabled(newForm)}
-          sx={{ backgroundColor: "black", borderRadius: "48px" }}
-      >
-        ВЫЙТИ
-      </Button>
     </>
   );
 }

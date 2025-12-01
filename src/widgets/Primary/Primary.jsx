@@ -2,12 +2,15 @@ import React from "react";
 import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
 import ImageTop from "../../assets/images/img-top.svg";
 import ImageBottom from "../../assets/images/img-bottom.svg";
-import ImagEyeWhite from "../../assets/images/eye-white.svg";
+import extensionsLogo from "../../assets/images/logo.svg";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
+import { useNavigate } from 'react-router-dom';
+
 function Primary({ form }) {
   const [isChecked, setIsChecked] = React.useState(false);
+  const navigate = useNavigate();
 
   function handleButtonClick(link) {
     window.location.href = link;
@@ -47,13 +50,25 @@ function Primary({ form }) {
             onClick={() => handleButtonClick(form.tg_bot_url)}
           >
             Телеграм бот
-            <img
-              src={ImagEyeWhite}
-              className="button-image"
-              alt="версия для незрячих"
-            />
           </CustomButton>
           <p className="button-label">Версия для незрячих</p>
+        </div>
+        <div className="button-area">
+          <CustomButton
+            className={"button_light"}
+            label="Расширение"
+            onClick={() => {
+              navigate('/extensions/')
+            }}
+          >
+            Расширение
+            <img
+              src={extensionsLogo}
+              className="button-image"
+              alt="Расширение"
+            />
+          </CustomButton>
+          <p className="button-label">YaForms Accessibility</p>
         </div>
       </div>
       <ConfirmCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
