@@ -8,7 +8,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      CI_BASE_URL: ${{ vars.BASE_URL }}
+      CI_VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
     steps:
       - name: Check out branch
         uses: actions/checkout@v3
