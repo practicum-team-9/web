@@ -88,11 +88,55 @@ height: 19px;
     .form-bot {
         flex-direction: column;
         gap: 10px;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .form-bot .checkbox-text {
+        max-width: 100%;
+    }
+
+    .form-bot .button {
+        min-height: 0;
+        font-size: 25px;
+        padding: 8px 16px;
     }
 }
 
 @media screen and (max-width: 750px) {
+    .login-header {
+        font-size: 28px;
+    }
+
+    .login-form {
+        font-size: 16px;
+    }
+
+    .form-input {
+        font-size: 16px;
+    }
+
+
+    .form-bot .button {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 425px) {
+    .login-header {
+        font-size: 28px;
+    }
+
+    .login-form {
+        font-size: 16px;
+    }
+
+    .form-input {
+        font-size: 16px;
+    }
+
+
+    .form-bot .button {
+        max-width: 100%;
+    }
 }

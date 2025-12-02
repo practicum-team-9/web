@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Box, Typography } from "@mui/material";
 import CustomButton from "@/shared/ui/CustomButton/CustomButton";
 import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
@@ -82,60 +81,3 @@ function Login({ onLogin }) {
 }
 
 export default Login;
-
-
-/*
-      <Typography
-        variant="h2"
-        align="center"
-        sx={{ fontFamily: "ActayWide, sans-serif", marginBottom: "25px" }}
-      >
-        Вход в личный кабинет
-      </Typography>
-      <Box
-        component="form"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "5px",
-          margin: "0 auto",
-        }}
-        onSubmit={handleSubmit}
-      >
-        <TextField
-          label="Логин или Email"
-          variant="outlined"
-          name="username"
-          value={formState.username}
-          onChange={handleChange}
-          sx={{ fontFamily: "ActayWide, sans-serif", marginBottom: "9px" }}
-          autoComplete="on"
-        />
-        <TextField
-          label="Пароль"
-          variant="outlined"
-          name="password"
-          type="password"
-          value={formState.password}
-          onChange={handleChange}
-          sx={{ fontFamily: "ActayWide, sans-serif" }}
-          autoComplete="on"
-        />
-        <div className="button-container">
-          <p className="error">{error}</p>
-          <Button
-            variant="contained"
-            type="submit"
-            sx={{
-              fontFamily: "ActayWide, sans-serif",
-              backgroundColor: "#000",
-              borderRadius: "32px",
-              width: "262px",
-            }}
-            disabled={!formState.password || !formState.username}
-          >
-            Войти
-          </Button>
-        </div>
-      </Box>
-*/
