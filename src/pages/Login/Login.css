@@ -16,3 +16,35 @@ color: #E04742;
 margin:0;
 height: 19px;
 }
+
+.login-container {
+    margin: 0 auto;
+    max-width: 1016px; 
+}
+
+.login-header {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 530px;
+    width: 100%;
+    gap: 5px;
+    font-size: 24px;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    text-align: start;
+}
+
+.form-bot {
+    width:100%;
+    display: flex;
+    font-size: 18px;
+}

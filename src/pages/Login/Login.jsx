@@ -53,21 +53,22 @@ function Login({ onLogin }) {
       <img src={ImageTop} className="img-top" alt="Логотип сердце в руках" />
       <div className="login-container">
         <h2 className="login-header">Вход в личный кабинет</h2>
-        <form>
-          <label>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label className="form-label">
             Имя пользователя
-            <input type="text" />
+            <input placeholder='Логин или Email' type="text" name="username" id="username" value={formState.username ? formState.username : ''} onChange={handleChange} />
           </label>
-          <label>
+          <label className="form-label">
             Пароль
-            <input type="text" />
+            <input placeholder='Пароль' type="password" name="password" id="password" value={formState.password ? formState.password : ''} onChange={handleChange} />
           </label>
-          <label>
-            <input type="checkbox" />
-            Запомнить меня
-          </label>
-          <Button type="submit">Войти</Button>
-
+          <div className="form-bot">
+            <label>
+              <input type="checkbox" />
+              Запомнить меня
+            </label>
+            <Button type="submit" disabled={!formState.password || !formState.username}>Войти</Button>
+          </div>
         </form>
         
       </div>
