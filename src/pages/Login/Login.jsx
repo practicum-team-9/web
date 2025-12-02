@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
+import ImageTop from "../../assets/images/img-top.svg";
+import ImageBottom from "../../assets/images/img-bottom.svg";
 
 import "./Login.css";
 
@@ -48,6 +50,47 @@ function Login({ onLogin }) {
   if (isLoading) return <Loader />;
   return (
     <>
+      <img src={ImageTop} className="img-top" alt="Логотип сердце в руках" />
+      <div className="login-container">
+        <h2 className="login-header">Вход в личный кабинет</h2>
+        <form>
+          <label>
+            Имя пользователя
+            <input type="text" />
+          </label>
+          <label>
+            Пароль
+            <input type="text" />
+          </label>
+          <label>
+            <input type="checkbox" />
+            Запомнить меня
+          </label>
+          <Button type="submit">Войти</Button>
+
+        </form>
+        
+      </div>
+      <img
+        src={ImageBottom}
+        className="img-bottom"
+        alt="Логотип коробка в руках"
+      />
+    </>
+  );
+}
+
+export default Login;
+
+
+/*
+      <Typography
+        variant="h2"
+        align="center"
+        sx={{ fontFamily: "ActayWide, sans-serif", marginBottom: "25px" }}
+      >
+        Вход в личный кабинет
+      </Typography>
       <Box
         component="form"
         sx={{
@@ -58,13 +101,6 @@ function Login({ onLogin }) {
         }}
         onSubmit={handleSubmit}
       >
-        <Typography
-          variant="h5"
-          align="center"
-          sx={{ fontFamily: "ActayWide, sans-serif", marginBottom: "25px" }}
-        >
-          Вход в личный кабинет
-        </Typography>
         <TextField
           label="Логин или Email"
           variant="outlined"
@@ -101,8 +137,4 @@ function Login({ onLogin }) {
           </Button>
         </div>
       </Box>
-    </>
-  );
-}
-
-export default Login;
+*/
