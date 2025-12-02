@@ -69,8 +69,14 @@ function Login({ onLogin }) {
       .catch((err) => {
         setIsLoading(false);
         setError(err.response.data.detail);
-        setError('Не удалось отправить данные!');
-        alert(error)
+        if (err.status == "404") {
+          setError('Не удалось отправить данные!');
+        } else if (err.status == "401" && err.response.data.detail) {
+          setError(err.response.data.detail)
+        } else {
+          setError('Что-то пошло не так!')
+        }
+        console.log(err)
       })
       .finally(() => {
         setIsLoading(false);
