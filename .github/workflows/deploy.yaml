@@ -31,4 +31,5 @@ jobs:
           overwrite: true
           source: 'dist'
           target: '~/prod-frontend/'
+          rm: true
 
