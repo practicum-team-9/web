@@ -7,12 +7,160 @@
 }
 
 .error {
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-color: #E04742;
-margin:0;
-height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #E04742;
+    margin:0;
+}
+
+.login-container {
+    margin: 0 auto;
+    max-width: 1016px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-header {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 530px;
+    width: 100%;
+    gap: 16px;
+    font-size: 24px;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    text-align: start;
+    gap: 4px;
+    color: rgba(0,0, 0, 0.3);
+    position: relative;
+}
+
+.form-input {
+    border: 1px solid rgba(0,0, 0, 0.3);
+    border-radius: 16px;
+    background-color: rgba(0,0, 0, 0.05);
+    padding: 16px 30px;
+    font-size: 24px;
+    color: rgba(0,0, 0);
+}
+
+    .showpass-btn {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+    }
+
+    .showpass-eye {
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+
+.form-input::placeholder {
+    color: rgba(0,0, 0, 0.3);
+}
+
+.form-bot {
+    width:100%;
+    display: flex;
+    font-size: 18px;  
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 928px) {
+
+    .login-header {
+        font-size: 48px;
+    }
+
+    .login-form {
+        font-size: 24px;
+    }
+
+    .form-input {
+        border-radius: 16px;
+    }
+    .form-bot {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .form-bot .checkbox-text {
+        max-width: 100%;
+    }
+
+    .form-bot .button {
+        min-height: 0;
+        font-size: 25px;
+        padding: 8px 16px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .login-header {
+        font-size: 28px;
+    }
+
+    .login-form {
+        font-size: 16px;
+    }
+
+    .form-input {
+        font-size: 16px;
+    }
+
+
+    .form-bot .button {
+        max-width: 100%;
+    }
+
+
+
+    .showpass-btn {
+        bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .login-header {
+        font-size: 28px;
+    }
+
+    .login-form {
+        font-size: 16px;
+    }
+
+    .form-input {
+        font-size: 16px;
+    }
+
+
+    .form-bot .button {
+        max-width: 100%;
+    }
 }

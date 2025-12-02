@@ -6,7 +6,7 @@ function CustomButton(props) {
     <button
       disabled={props.disabled}
       className={`button ${props.className}`}
-      type="button"
+      type={props.type ? props.type : "button"}
       onClick={props.onClick}
     >
       {props.children}
