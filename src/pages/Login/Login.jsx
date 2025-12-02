@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { TextField, Button, Box, Typography } from "@mui/material";
+import CustomButton from "@/shared/ui/CustomButton/CustomButton";
 import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 import ImageTop from "../../assets/images/img-top.svg";
 import ImageBottom from "../../assets/images/img-bottom.svg";
 
 import "./Login.css";
+import CustomCheckbox from "@/shared/ui/CustomCheckbox/CustomCheckbox";
 
 function Login({ onLogin }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +15,7 @@ function Login({ onLogin }) {
     username: "",
     password: "",
   });
+  const [ isChecked, setIsChecked ] = useState(false)
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -56,18 +59,15 @@ function Login({ onLogin }) {
         <form className="login-form" onSubmit={handleSubmit}>
           <label className="form-label">
             Имя пользователя
-            <input placeholder='Логин или Email' type="text" name="username" id="username" value={formState.username ? formState.username : ''} onChange={handleChange} />
+            <input className="form-input" placeholder='Логин или Email' type="text" name="username" id="username" value={formState.username ? formState.username : ''} onChange={handleChange} />
           </label>
           <label className="form-label">
             Пароль
-            <input placeholder='Пароль' type="password" name="password" id="password" value={formState.password ? formState.password : ''} onChange={handleChange} />
+            <input className="form-input" placeholder='Пароль' type="password" name="password" id="password" value={formState.password ? formState.password : ''} onChange={handleChange} />
           </label>
           <div className="form-bot">
-            <label>
-              <input type="checkbox" />
-              Запомнить меня
-            </label>
-            <Button type="submit" disabled={!formState.password || !formState.username}>Войти</Button>
+            <CustomCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
+            <CustomButton className="button_light" type="submit" disabled={!formState.password || !formState.username}>Войти</CustomButton>
           </div>
         </form>
         
