@@ -67,15 +67,11 @@
 @media screen and (max-width: 928px) {
     .checkbox-text{
         font-size: 25px;
-        max-width: 65%;
     }
 
     .custom-checkbox {
         width: 54px;
         height: 57px;
-    }
-    .checkbox-container {
-        max-width: 75%;
     }
     }
 
