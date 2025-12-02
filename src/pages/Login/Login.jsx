@@ -4,6 +4,8 @@ import { api } from "@/shared/api";
 import Loader from "@/shared/ui/Loader/Loader.jsx";
 import ImageTop from "../../assets/images/img-top.svg";
 import ImageBottom from "../../assets/images/img-bottom.svg";
+import eyeImg from "../../assets/images/eye-black.svg";
+import eyeXImg from "../../assets/images/eye-crossed.svg";
 
 import "./Login.css";
 import CustomCheckbox from "@/shared/ui/CustomCheckbox/CustomCheckbox";
@@ -15,6 +17,7 @@ function Login({ onLogin }) {
     password: "",
   });
   const [ isChecked, setIsChecked ] = useState(false)
+  const [ isPassVisible, setIsPassVisible ] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -41,7 +44,7 @@ function Login({ onLogin }) {
     } else if (!e.target.validity.valid) {
       switch (name) {
         case 'username':
-          setError('Имя пользователя должно быть заполнено!');
+          setError('Имя пользователя должно включать латинские буквы и быть от 3 до 16 символов в длинну!');
           break;
         case 'password':
           setError('Пароль заполнен неверно!');
@@ -92,11 +95,36 @@ function Login({ onLogin }) {
         <form className="login-form" onSubmit={handleSubmit}>
           <label className="form-label">
             Имя пользователя
-            <input className="form-input" placeholder='Логин или Email' type="text" name="username" id="username" value={formState.username ? formState.username : ''} onChange={handleChange} required={true} />
+            <input 
+            className="form-input" 
+            placeholder='Логин или Email' 
+            type="text" 
+            name="username" 
+            id="username" 
+            pattern="[a-zA-Z0-9_]{3,20}" 
+            value={formState.username ? formState.username : ''} 
+            onChange={handleChange} 
+            required={true} />
           </label>
           <label className="form-label">
             Пароль
-            <input className="form-input" placeholder='Пароль' type="password" name="password" id="password" value={formState.password ? formState.password : ''} onChange={handleChange} required={true} />
+            <input 
+            className="form-input" 
+            placeholder='Пароль' 
+            type={isPassVisible ? "text" : "password"} 
+            name="password" 
+            id="password"
+            value={formState.password ? formState.password : ''} 
+            onChange={handleChange} 
+            required={true} />
+            <button
+            className="showpass-btn" 
+            type="button" 
+            onClick={() => {setIsPassVisible(!isPassVisible)}}>
+              <img 
+              src={isPassVisible ? eyeXImg : eyeImg }
+              alt="Иконка глаза" />
+            </button>
           </label>
           <p className="error">{error}</p>
           <div className="form-bot">
