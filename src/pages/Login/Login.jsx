@@ -27,6 +27,31 @@ function Login({ onLogin }) {
       ...prevState,
       [name]: value,
     }));
+    if (!value) {
+      switch (name) {
+        case 'username':
+          setError('Введите имя пользователя!');
+          break;
+        case 'password':
+          setError('Введите Пароль!');
+          break;
+        default:
+          setError('Заполните все поля!')
+      }
+    } else if (!e.target.validity.valid) {
+      switch (name) {
+        case 'username':
+          setError('Имя пользователя должно быть заполнено!');
+          break;
+        case 'password':
+          setError('Пароль заполнен неверно!');
+          break;
+        default:
+          setError('Заполните все поля!')
+      }      
+    } else {
+      setError('')
+    }
   };
 
   if (isLoading) return <Loader />;
@@ -44,12 +69,15 @@ function Login({ onLogin }) {
       .catch((err) => {
         setIsLoading(false);
         setError(err.response.data.detail);
+        setError('Не удалось отправить данные!');
+        alert(error)
       })
       .finally(() => {
         setIsLoading(false);
       });
   };
   if (isLoading) return <Loader />;
+
   return (
     <>
       <img src={ImageTop} className="img-top" alt="Логотип сердце в руках" />
@@ -58,18 +86,18 @@ function Login({ onLogin }) {
         <form className="login-form" onSubmit={handleSubmit}>
           <label className="form-label">
             Имя пользователя
-            <input className="form-input" placeholder='Логин или Email' type="text" name="username" id="username" value={formState.username ? formState.username : ''} onChange={handleChange} />
+            <input className="form-input" placeholder='Логин или Email' type="text" name="username" id="username" value={formState.username ? formState.username : ''} onChange={handleChange} required={true} />
           </label>
           <label className="form-label">
             Пароль
-            <input className="form-input" placeholder='Пароль' type="password" name="password" id="password" value={formState.password ? formState.password : ''} onChange={handleChange} />
+            <input className="form-input" placeholder='Пароль' type="password" name="password" id="password" value={formState.password ? formState.password : ''} onChange={handleChange} required={true} />
           </label>
+          <p className="error">{error}</p>
           <div className="form-bot">
             <CustomCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
             <CustomButton className="button_light" type="submit" disabled={!formState.password || !formState.username}>Войти</CustomButton>
           </div>
-        </form>
-        
+        </form>        
       </div>
       <img
         src={ImageBottom}
