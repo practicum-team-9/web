@@ -95,8 +95,8 @@ function Login({ onLogin }) {
         setError(err.response.data.detail);
         if (err.status == "404") {
           setError('Не удалось отправить данные!');
-        } else if (err.status == "401" && err.response.data.detail) {
-          setError(err.response.data.detail)
+        } else if (err.status == "401") {
+          setError('Не верный Логин или Пароль')
         } else {
           setError('Что-то пошло не так!')
         }
