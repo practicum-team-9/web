@@ -16,6 +16,10 @@ function Login({ onLogin }) {
     username: "",
     password: "",
   });
+  const [ formValidityMsg, setFormValidityMsg ] = useState({
+    username: "",
+    password: ""
+  })
   const [ isChecked, setIsChecked ] = useState(false)
   const [ isPassVisible, setIsPassVisible ] = useState(false);
   const [error, setError] = useState("");
@@ -33,10 +37,17 @@ function Login({ onLogin }) {
     if (!value) {
       switch (name) {
         case 'username':
-          setError('Введите имя пользователя!');
+          setFormValidityMsg((prevState) => ({
+            ...prevState,
+            [name]: 'Введите имя пользователя',
+          }))
           break;
         case 'password':
-          setError('Введите Пароль!');
+          //setError('Введите Пароль!');
+          setFormValidityMsg((prevState) => ({
+            ...prevState,
+            [name]: 'Введите пароль!',
+          }))
           break;
         default:
           setError('Заполните все поля!')
@@ -44,16 +55,26 @@ function Login({ onLogin }) {
     } else if (!e.target.validity.valid) {
       switch (name) {
         case 'username':
-          setError('Имя пользователя должно включать латинские буквы и быть от 3 до 16 символов в длинну!');
+          setFormValidityMsg((prevState) => ({
+            ...prevState,
+            [name]: 'Имя пользователя должно включать латинские буквы и быть от 3 до 16 символов в длинну!',
+          }))
           break;
         case 'password':
-          setError('Пароль заполнен неверно!');
+          setFormValidityMsg((prevState) => ({
+            ...prevState,
+            [name]: 'Пароль заполнен неверно!',
+          }))
           break;
         default:
           setError('Заполните все поля!')
       }      
     } else {
       setError('')
+      setFormValidityMsg((prevState) => ({
+        ...prevState,
+        [name]: '',
+      }))
     }
   };
 
@@ -106,6 +127,7 @@ function Login({ onLogin }) {
             onChange={handleChange} 
             required={true} />
           </label>
+          <p className="error">{formValidityMsg.username}</p>
           <label className="form-label">
             Пароль
             <input 
@@ -126,10 +148,11 @@ function Login({ onLogin }) {
               alt="Иконка глаза" />
             </button>
           </label>
+          <p className="error">{formValidityMsg.password}</p>
           <p className="error">{error}</p>
           <div className="form-bot">
             <CustomCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
-            <CustomButton className="button_light" type="submit" disabled={!formState.password || !formState.username}>Войти</CustomButton>
+            <CustomButton className="button_light" type="submit" disabled={!formValidityMsg.username == '' || !formValidityMsg.password == ''}>Войти</CustomButton>
           </div>
         </form>        
       </div>
