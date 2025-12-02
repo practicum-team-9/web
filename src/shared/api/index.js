@@ -37,6 +37,7 @@ import axios from "axios";
 // })
 
 const makeRequest = (url, method, data) => {
+  console.log(import.meta.env.VITE_BASE_URL + url)
   return axios({
     url: import.meta.env.VITE_BASE_URL + url,
     method: method,
