@@ -26,7 +26,7 @@ function CustomCheckbox({ isChecked, setIsChecked }) {
             }
           }}
           className={`custom-checkbox ${
-            isChecked ? "custom-checkbox_checked" : "custom-checkbox_unchecked"
+            isChecked ? "custom-checkbox_checked" : ""
           }`}
         ></span>
       </label>

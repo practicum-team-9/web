@@ -6,7 +6,7 @@ import extensionsLogo from "../../assets/images/logo.svg";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Primary({ form }) {
   const [isChecked, setIsChecked] = React.useState(false);
@@ -17,13 +17,9 @@ function Primary({ form }) {
   }
 
   return (
-    <main className="primary">
-      <img src={ImageTop} className="img-top" alt="Логотип сердце в руках" />
-      <img
-        src={ImageBottom}
-        className="img-bottom"
-        alt="Логотип коробка в руках"
-      />
+    <div className="primary">
+      <img src={ImageTop} className="img-top" alt="" />
+      <img src={ImageBottom} className="img-bottom" alt="" />
       <h1 className="title title_big">
         Для прохождения анкетирования выберите «Я&nbsp;Форму» или
         <span className="no-wrap">&nbsp;</span>
@@ -34,7 +30,7 @@ function Primary({ form }) {
           <CustomButton
             disabled={!isChecked}
             className={"button_light"}
-            label="стандартная версия опроса"
+            label="Стандартная версия опроса"
             onClick={() => handleButtonClick(form.url)}
           >
             Яндекс форма
@@ -58,7 +54,7 @@ function Primary({ form }) {
             className={"button_light"}
             label="Расширение"
             onClick={() => {
-              navigate('/extensions/')
+              navigate("/extensions/");
             }}
           >
             Расширение
@@ -72,7 +68,7 @@ function Primary({ form }) {
         </div>
       </div>
       <ConfirmCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
-    </main>
+    </div>
   );
 }
 

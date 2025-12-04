@@ -8,7 +8,7 @@ function ConfirmCheckbox({ isChecked, setIsChecked }) {
 
   return (
     <div className="checkbox-container">
-      <label className="checkbox-label">
+      <label className="checkbox-label" >
         <input
           type="checkbox"
           className="hidden-checkbox"
@@ -18,6 +18,7 @@ function ConfirmCheckbox({ isChecked, setIsChecked }) {
         <span
           tabIndex={0}
           role="checkbox"
+          title="Чекбокс принятия условий обработки персональных данных"
           aria-checked={isChecked}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -26,7 +27,7 @@ function ConfirmCheckbox({ isChecked, setIsChecked }) {
             }
           }}
           className={`custom-checkbox ${
-            isChecked ? "custom-checkbox_checked" : "custom-checkbox_unchecked"
+            isChecked ? "custom-checkbox_checked" : ""
           }`}
         ></span>
       </label>

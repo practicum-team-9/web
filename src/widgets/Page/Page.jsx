@@ -5,7 +5,7 @@ function Page(props) {
   return (
     <>
       <header>
-        <img src={logo} className="logo" alt="Логотип организации инватур" />
+        <img src={logo} className="logo" alt="Инватур: Нижегородская региональная общественная организация инвалидов" />
       </header>
       <main className="main">{props.children}</main>
     </>

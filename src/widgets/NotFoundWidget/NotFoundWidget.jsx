@@ -30,13 +30,11 @@ function NotFoundWidget() {
                 </a>
               </p>
             </div>
-            <div></div>
           </div>
         </div>
         <img
             src={ImageBottom}
             className="img-bottom"
-            alt="Логотип коробка в руках"
         />
       </>
   );

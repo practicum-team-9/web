@@ -32,7 +32,7 @@ function ExtensionsWidget() {
                     <img
                       src={yandexBrowserIcon}
                       className="button-image"
-                      alt="Иконка Яндекс Бразуер"
+                      alt=""
                     />
                     Яндекс Браузер
                   </CustomButton>
@@ -47,7 +47,7 @@ function ExtensionsWidget() {
                     <img
                       src={googleChromeIcon}
                       className="button-image"
-                      alt="Иконка Google Chrome"
+                      alt=""
                     />
                     Google Chrome
                   </CustomButton>
