@@ -1,0 +1,13 @@
+.copy-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell {
+  margin: 0;
+  width: calc(100% - 30px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

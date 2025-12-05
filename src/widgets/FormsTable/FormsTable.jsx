@@ -18,6 +18,9 @@ import { TABLE_ROW_DATA } from "@/app/constants";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+
+import "./FormsTable.css";
 
 function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const [isPending, setIsPending] = useState(false);
@@ -86,6 +89,10 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
       });
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+  };
+
   return (
     <>
       <Typography
@@ -152,7 +159,8 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
                           whiteSpace: "nowrap",
                         }}
                       >
-                        {editIndex === rowIndex ? (
+                        {[2, 3].every((element) => cellIndex !== element) &&
+                        editIndex === rowIndex ? (
                           <TextField
                             type="text"
                             variant="standard"
@@ -167,7 +175,15 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
                             onChange={handleChange}
                           />
                         ) : (
-                          cell[1]
+                          <div className="copy-button-container">
+                            <p className="cell">{cell[1]} </p>
+                            <IconButton
+                              sx={{ width: "24px", height: "24px" }}
+                              onClick={() => copyToClipboard(cell[1])}
+                            >
+                              <ContentCopyIcon />
+                            </IconButton>
+                          </div>
                         )}
                       </TableCell>
                     ))}
