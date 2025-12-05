@@ -1,15 +1,16 @@
 import React from "react";
-import ChromeInstruction from "@/widgets/ExtesionInstruction/ChromeInstruction";
-import YaBrowserInstruction from "@/widgets/ExtesionInstruction/YaBrowserInstruction";
+import { yandexBrowserInstructions } from "@/app/constants/extInstructions/yaBrowser";
+import ExtInstructions from "@/widgets/ExtesionInstruction/ExtInstruction";
+import { googleChromeInstructions } from "@/app/constants/extInstructions/chrome";
 
 function ExtensionGuide({ browser }) {
   switch (browser) {
     case "GoogleChrome":
-      return <ChromeInstruction />
+      return <ExtInstructions instructions={googleChromeInstructions}/>
     case "YandexBrowser":
-      return <YaBrowserInstruction />
+      return <ExtInstructions instructions={yandexBrowserInstructions}/>
     default:
-      return <ChromeInstruction />
+      return <ExtInstructions instructions={googleChromeInstructions}/>
   }
 }
 
