@@ -79,7 +79,7 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const handleDeleteRow = (id) => {
     setIsPending(true);
     deleteForm(id)
-      .then((res) => {
+      .then(() => {
         setForms(forms.filter((i) => i.id !== id));
         setIsPending(false);
       })

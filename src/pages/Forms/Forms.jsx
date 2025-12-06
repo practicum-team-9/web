@@ -8,7 +8,7 @@ function Forms({ getForms }) {
     getForms()
       .then((forms) => setForms(forms.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [getForms]);
 
   return <FormsList forms={forms} />;
 }
