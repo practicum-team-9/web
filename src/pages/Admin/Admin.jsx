@@ -10,7 +10,7 @@ function Admin(props) {
       .getForms()
       .then((forms) => setForms(forms.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [props]);
 
   return (
     <Box

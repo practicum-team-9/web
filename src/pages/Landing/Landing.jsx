@@ -13,7 +13,7 @@ function Landing({ getFormById }) {
       .then((form) => setForm(form.data))
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [getFormById, location.pathname]);
 
   if (isLoading) return <Loader />;
   if (!form) return <NotFoundWidget />;
