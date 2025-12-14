@@ -16,6 +16,7 @@
   user-select: none;
   margin: 0 auto;
   display: flex;
+  padding: 16px 8px;
 }
 
 .hidden-checkbox {
@@ -84,7 +85,7 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 550px) {
   .checkbox-text {
     font-size: 14px;
     line-height: 18px;

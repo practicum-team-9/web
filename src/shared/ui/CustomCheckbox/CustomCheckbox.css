@@ -1,4 +1,4 @@
-.checkbox-container {
+.custom-checkbox-container {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: -webkit-box;
@@ -44,7 +44,7 @@
   background-color: #262626;
 }
 
-.checkbox-text {
+.custom-checkbox-text {
   font-family: Inter;
   font-size: 18px;
   line-height: 30px;
@@ -56,12 +56,12 @@
   justify-self: center;
 }
 
-.checkbox-link {
+.custom-checkbox-link {
   border-bottom: 2px solid;
 }
 
 @media screen and (max-width: 928px) {
-  .checkbox-text {
+  .custom-checkbox-text {
     font-size: 25px;
   }
 
@@ -72,7 +72,7 @@
 }
 
 @media screen and (max-width: 750px) {
-  .checkbox-text {
+  .custom-checkbox-text {
     font-size: 18px;
     line-height: 20px;
   }
@@ -83,13 +83,13 @@
     margin-right: 22px;
   }
 
-  .checkbox-container {
+  .custom-checkbox-container {
     max-width: 79%;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .checkbox-text {
+  .custom-checkbox-text {
     font-size: 14px;
     line-height: 18px;
   }

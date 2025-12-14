@@ -1,3 +1,7 @@
+.primary {
+    padding: 16px 8px;
+}
+
 .img-top {
     width: 199px;
     position: absolute;
@@ -25,7 +29,7 @@
 }
 
 .buttons {
-    max-width: 580px;
+    max-width: 840px;
     width: 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -33,10 +37,14 @@
     display: grid;
     margin: 0 auto 40px;
     -ms-grid-columns: 1fr 50px 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     -webkit-column-gap: 50px;
     -moz-column-gap: 50px;
     column-gap: 50px;
+}
+
+.button-image {
+    margin: 0 16px;
 }
 
 .button-label {
@@ -129,7 +137,7 @@
 
     .buttons {
         max-width: 350px;
-        margin-bottom: 0;
+        margin-bottom: 12px;
     }
 
     .button-label {
@@ -139,7 +147,14 @@
 
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 550px) {
+    .button-label {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 550px) {
     .title {
         font-size: 28px;
         margin: 0 auto 20px;
@@ -148,9 +163,6 @@
 
     .buttons {
         max-width: 258px;
-    }
-
-    .button-label {
-        font-size: 19px;
+        row-gap: 12px;
     }
 }

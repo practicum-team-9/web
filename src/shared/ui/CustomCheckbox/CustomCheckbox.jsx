@@ -7,8 +7,8 @@ function CustomCheckbox({ isChecked, setIsChecked }) {
   }
 
   return (
-    <div className="checkbox-container">
-      <label className="checkbox-label">
+    <div className="custom-checkbox-container">
+      <label className="custom-checkbox-label">
         <input
           type="checkbox"
           className="hidden-checkbox"
@@ -30,7 +30,7 @@ function CustomCheckbox({ isChecked, setIsChecked }) {
           }`}
         ></span>
       </label>
-      <p className="checkbox-text">
+      <p className="custom-checkbox-text">
         Запомнить меня
       </p>
     </div>

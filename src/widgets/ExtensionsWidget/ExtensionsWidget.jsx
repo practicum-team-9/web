@@ -22,7 +22,7 @@ function ExtensionsWidget() {
           <div className="text-container">
             <h2 className="not-found-h">Скачайте расширение <br /> для анкеты</h2>
             <h3 className="not-found-h2">Выберите свой бразуер</h3>
-            <div className="buttons">
+            <div className="ext-buttons">
               <div className="button-area">
                 <a href={packagedExtension} download={'YaFormsAccessibility.zip'}>
                   <CustomButton
