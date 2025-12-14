@@ -1,7 +1,3 @@
-.list {
-    padding-top: 14px;
-}
-
 .img-bottom {
     width: 212px;
     position: absolute;
@@ -14,7 +10,7 @@
     justify-content: center;
     gap: 90px;
     flex-wrap: wrap;
-    margin: 18px auto 0;
+    margin: 0 auto 18px;
 }
 
 .list-button {

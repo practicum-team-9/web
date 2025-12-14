@@ -1,6 +1,6 @@
 .main {
     background-color: #FFFFFF;
-    min-height: 522px;
+    min-height: 340px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border-radius: 46px;
@@ -14,7 +14,6 @@
     flex-direction: column;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
     text-align: center;
     padding: 60px 68px;
     min-width: 0;
