@@ -9,12 +9,12 @@ function Landing({ getFormById }) {
   const { id } = useParams()
 
   useEffect(() => {
-
+    setIsLoading(true)
     getFormById(id)
       .then((form) => setForm(form.data))
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [getFormById, id]);
 
   if (isLoading) return <Loader />;
   if (!form) return <NotFoundWidget />;
