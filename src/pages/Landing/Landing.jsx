@@ -10,9 +10,19 @@ function Landing({ getFormById }) {
 
   useEffect(() => {
     setIsLoading(true)
+    if (!id) return;
     getFormById(id)
-      .then((form) => setForm(form.data))
-      .catch((err) => console.log(err))
+      .then((response) => {
+        if (response && response.data) {
+          setForm(response.data)
+        } else {
+          setForm(null);
+        }
+      })
+      .catch((err) => {
+        console.error(err)
+        setForm(null)
+      })
       .finally(() => setIsLoading(false));
   }, [getFormById, id]);
 
