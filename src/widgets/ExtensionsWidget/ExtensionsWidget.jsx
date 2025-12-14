@@ -15,7 +15,7 @@ function ExtensionsWidget() {
 
   return (
       <>
-        <div className="not-found">
+        <div className="extension-container">
           <div className="image-container">
             <img className="image" src={extensionsImage} alt="Девушка под пледом работает за компьютером" />
           </div>
