@@ -9,8 +9,9 @@ function Landing({ getFormById }) {
   const { id } = useParams()
 
   useEffect(() => {
-    setIsLoading(true)
     if (!id) return;
+    
+    setIsLoading(true)
     getFormById(id)
       .then((response) => {
         if (response && response.data) {
@@ -27,8 +28,11 @@ function Landing({ getFormById }) {
   }, [getFormById, id]);
 
   if (isLoading) return <Loader />;
-  if (!form) return <NotFoundWidget />;
-  return <Primary form={form} />;
+  if (!form) {
+    return <NotFoundWidget /> 
+  } else {
+    return <Primary form={form} />;
+  }
 }
 
 export default Landing;
