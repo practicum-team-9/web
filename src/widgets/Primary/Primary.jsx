@@ -3,6 +3,7 @@ import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
 import ImageTop from "../../assets/images/img-top.svg";
 import ImageBottom from "../../assets/images/img-bottom.svg";
 import extensionsLogo from "../../assets/images/logo.svg";
+import tgBotLogo from "../../assets/images/eye-white.svg";
 import ConfirmCheckbox from "../../shared/ui/ConfirmCheckbox/ConfirmCheckbox.jsx";
 import "./Primary.css";
 
@@ -46,6 +47,11 @@ function Primary({ form }) {
             onClick={() => handleButtonClick(form.tg_bot_url)}
           >
             Телеграм бот
+            <img
+              src={tgBotLogo}
+              className="button-image"
+              alt="Расширение"
+            />
           </CustomButton>
           <p className="button-label">Версия для незрячих</p>
         </div>
@@ -64,7 +70,7 @@ function Primary({ form }) {
               alt="Расширение"
             />
           </CustomButton>
-          <p className="button-label">YaForms Accessibility</p>
+          <p className="button-label">Установить расширение браузера для слабовидящих</p>
         </div>
       </div>
       <ConfirmCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
