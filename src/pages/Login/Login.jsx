@@ -39,7 +39,7 @@ function Login({ onLogin }) {
         case 'username':
           setFormValidityMsg((prevState) => ({
             ...prevState,
-            [name]: 'Введите имя пользователя',
+            [name]: 'Введите имя пользователя!',
           }))
           break;
         case 'password':
@@ -96,7 +96,7 @@ function Login({ onLogin }) {
         if (err.status == "404") {
           setError('Не удалось отправить данные!');
         } else if (err.status == "401") {
-          setError('Не верный Логин или Пароль')
+          setError('Неправильное имя пользователя или пароль!')
         } else {
           setError('Что-то пошло не так!')
         }
@@ -122,7 +122,6 @@ function Login({ onLogin }) {
             type="text" 
             name="username" 
             id="username" 
-            pattern="[a-zA-Z0-9_]{3,20}" 
             value={formState.username ? formState.username : ''} 
             onChange={handleChange} 
             required={true} />
