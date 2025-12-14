@@ -39,14 +39,14 @@ function Login({ onLogin }) {
         case 'username':
           setFormValidityMsg((prevState) => ({
             ...prevState,
-            [name]: 'Введите имя пользователя!',
+            [name]: 'Введите имя пользователя',
           }))
           break;
         case 'password':
           //setError('Введите Пароль!');
           setFormValidityMsg((prevState) => ({
             ...prevState,
-            [name]: 'Введите пароль!',
+            [name]: 'Введите пароль',
           }))
           break;
         default:
@@ -57,17 +57,17 @@ function Login({ onLogin }) {
         case 'username':
           setFormValidityMsg((prevState) => ({
             ...prevState,
-            [name]: 'Имя пользователя заполнено неверно!',
+            [name]: 'Имя пользователя заполнено неверно',
           }))
           break;
         case 'password':
           setFormValidityMsg((prevState) => ({
             ...prevState,
-            [name]: 'Пароль заполнен неверно!',
+            [name]: 'Пароль заполнен неверно',
           }))
           break;
         default:
-          setError('Заполните все поля!')
+          setError('Заполните все поля')
       }      
     } else {
       setError('')
@@ -96,9 +96,9 @@ function Login({ onLogin }) {
         if (err.status == "404") {
           setError('Не удалось отправить данные!');
         } else if (err.status == "401") {
-          setError('Неправильное имя пользователя или пароль!')
+          setError('Неправильное имя пользователя или пароль')
         } else {
-          setError('Что-то пошло не так!')
+          setError('Что-то пошло не так')
         }
         console.log(err)
       })
@@ -125,8 +125,8 @@ function Login({ onLogin }) {
             value={formState.username ? formState.username : ''} 
             onChange={handleChange} 
             required={true} />
+            <p className="error">{formValidityMsg.username}</p>
           </label>
-          <p className="error">{formValidityMsg.username}</p>
           <label className="form-label">
             Пароль
             <input 
@@ -146,8 +146,8 @@ function Login({ onLogin }) {
               src={isPassVisible ? eyeXImg : eyeImg }
               alt="Иконка глаза" />
             </button>
+            <p className="error">{formValidityMsg.password}</p>
           </label>
-          <p className="error">{formValidityMsg.password}</p>
           <p className="error">{error}</p>
           <div className="form-bot">
             <CustomCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
