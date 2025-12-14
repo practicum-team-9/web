@@ -57,7 +57,7 @@ function Login({ onLogin }) {
         case 'username':
           setFormValidityMsg((prevState) => ({
             ...prevState,
-            [name]: 'Имя пользователя должно включать латинские буквы и быть от 3 до 16 символов в длинну!',
+            [name]: 'Имя пользователя заполнено неверно!',
           }))
           break;
         case 'password':
