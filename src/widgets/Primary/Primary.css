@@ -20,7 +20,7 @@
     font-size: 50px;
     line-height: 100%;
     max-width: 1016px;
-    margin: 0 auto 30px;
+    margin: 0 auto 25px;
     display: inline-block;
 }
 
@@ -132,7 +132,7 @@
 @media screen and (max-width: 750px) {
     .title {
         font-size: 30px;
-        margin: 0 auto 20px;
+        margin: 0 auto 25px;
     }
 
     .buttons {
