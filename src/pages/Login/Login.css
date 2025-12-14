@@ -60,8 +60,11 @@
     color: rgba(0,0, 0);
 }
 
-
 .form-input:invalid {
+    border: 2px solid #E04742;
+}
+
+.form-input-invalid {
     border: 2px solid #E04742;
 }
 

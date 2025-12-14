@@ -117,7 +117,7 @@ function Login({ onLogin }) {
           <label className="form-label">
             Имя пользователя
             <input 
-            className="form-input" 
+            className={error ? "form-input form-input-invalid" : "form-input"} 
             placeholder='Логин или Email' 
             type="text" 
             name="username" 
@@ -130,7 +130,7 @@ function Login({ onLogin }) {
           <label className="form-label">
             Пароль
             <input 
-            className="form-input" 
+            className={error ? "form-input form-input-invalid" : "form-input"} 
             placeholder='Пароль' 
             type={isPassVisible ? "text" : "password"} 
             name="password" 
@@ -151,7 +151,7 @@ function Login({ onLogin }) {
           <p className="error">{error}</p>
           <div className="form-bot">
             <CustomCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
-            <CustomButton className="button_light" type="submit" disabled={!formValidityMsg.username == '' || !formValidityMsg.password == ''}>Войти</CustomButton>
+            <CustomButton className="button_light" type="submit" disabled={formValidityMsg.username || formValidityMsg.password || error}>Войти</CustomButton>
           </div>
         </form>        
       </div>
