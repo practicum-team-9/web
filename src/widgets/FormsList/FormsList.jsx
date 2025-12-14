@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "../../shared/ui/CustomButton/CustomButton.jsx";
 import ImageBottom from "../../assets/images/img-bottom.svg";
 import "./FormsList.css";
+import ImageTop from "@/assets/images/img-top.svg";
+import React from "react";
 
 function FormsList({ forms }) {
   const navigate = useNavigate();
@@ -13,8 +15,9 @@ function FormsList({ forms }) {
 
   return (
     <div className="list">
+        <img src={ImageTop} className="img-top" alt="" />
       <img src={ImageBottom} className="img-bottom" alt=""/>
-      <h1 className="title title_big">Заполните анкету</h1>
+      <h1 className="title forms__title title_big">Выберите анкету для заполнения</h1>
       <ul className="form-list">
         {forms.map((form, index) => (
           <li key={index}>
