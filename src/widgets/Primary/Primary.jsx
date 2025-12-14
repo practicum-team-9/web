@@ -22,7 +22,9 @@ function Primary({ form }) {
       <img src={ImageTop} className="img-top" alt="" />
       <img src={ImageBottom} className="img-bottom" alt="" />
       <h1 className="title title_big">
-        Выберите формат прохождения анкеты
+        Для прохождения анкетирования выберите «Я&nbsp;Форму» или
+        <span className="no-wrap">&nbsp;</span>
+        <span className="wrap"> </span>«Телеграм&nbsp;бот»
       </h1>
       <div className="buttons">
         <div className="button-area">

@@ -14,7 +14,7 @@ function FormsList({ forms }) {
   return (
     <div className="list">
       <img src={ImageBottom} className="img-bottom" alt=""/>
-      <h1 className="title title_big">Выберите анкету для заполнения</h1>
+      <h1 className="title title_big">Заполните анкету</h1>
       <ul className="form-list">
         {forms.map((form, index) => (
           <li key={index}>
