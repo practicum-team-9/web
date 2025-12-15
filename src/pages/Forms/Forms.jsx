@@ -12,7 +12,9 @@ function Forms({ getForms }) {
       .then((forms) => {
         setForms(forms.data)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.error(err)
+      })
       .finally(() => {
         setIsLoading(false)
       });

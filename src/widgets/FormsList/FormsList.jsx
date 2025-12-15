@@ -19,7 +19,7 @@ function FormsList({ forms }) {
       <img src={ImageBottom} className="img-bottom" alt=""/>
       <h1 className="title forms__title title_big">Выберите анкету для заполнения</h1>
       <ul className="form-list">
-        {forms.map((form, index) => (
+        {forms == [] ? forms.map((form, index) => (
           <li key={index}>
             <CustomButton
               className={`list-button ${
@@ -30,7 +30,7 @@ function FormsList({ forms }) {
               {form.name}
             </CustomButton>
           </li>
-        ))}
+        )) : <li>Не удалось загрузить анкеты</li>}
       </ul>
     </div>
   );
