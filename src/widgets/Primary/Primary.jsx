@@ -13,10 +13,6 @@ function Primary({ form }) {
   const [isChecked, setIsChecked] = React.useState(false);
   const navigate = useNavigate();
 
-  function handleButtonClick(link) {
-    window.location.href = link;
-  }
-
   return (
     <div className="primary">
       <img src={ImageTop} className="img-top" alt="" />
@@ -30,7 +26,7 @@ function Primary({ form }) {
             disabled={!isChecked}
             className={"button_light"}
             label="Стандартная версия опроса"
-            onClick={() => handleButtonClick(form.url)}
+            onClick={() => navigate(form.url)}
           >
             Яндекс форма
           </CustomButton>
@@ -42,7 +38,7 @@ function Primary({ form }) {
             disabled={!isChecked}
             className="button_dark"
             label="Версия для незрячих"
-            onClick={() => handleButtonClick(form.tg_bot_url)}
+            onClick={() => navigate(form.tg_bot_url)}
           >
             Телеграм бот
             <img
