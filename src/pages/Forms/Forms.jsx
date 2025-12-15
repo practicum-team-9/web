@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FormsList } from "@widgets";
+import Loader from "@/shared/ui/Loader/Loader";
 
 function Forms({ getForms }) {
   const [forms, setForms] = useState([]);
