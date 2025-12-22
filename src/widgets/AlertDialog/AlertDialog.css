@@ -1,0 +1,6 @@
+.MuiPaper-root {
+  padding: 100px;
+}
+.MuiPaper-root.MuiDialog-paper {
+  border-radius: 48px;
+}

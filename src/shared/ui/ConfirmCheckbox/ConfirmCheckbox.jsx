@@ -8,15 +8,14 @@ function ConfirmCheckbox({ isChecked, setIsChecked }) {
 
   return (
     <div className="checkbox-container">
-      <label className="checkbox-label" >
+      <label className="checkbox-label" tabIndex="0">
         <input
           type="checkbox"
           className="hidden-checkbox"
           checked={isChecked}
-          onChange={toggleCheckbox}
         />
         <span
-          tabIndex={0}
+          onClick={toggleCheckbox}
           role="checkbox"
           title="Чекбокс принятия условий обработки персональных данных"
           aria-checked={isChecked}

@@ -20,6 +20,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
+import AlertDialog from "../AlertDialog/AlertDialog";
+
 import "./FormsTable.css";
 
 function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
@@ -27,6 +29,9 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
   const [editIndex, setEditIndex] = useState(-1);
   const [editedRow, setEditedRow] = useState({});
   const [newForm, setNewForm] = useState({ name: "", url: "" });
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [rowToDelete, setRowToDelete] = useState(null);
 
   const handleEditClick = (index) => {
     setEditIndex(index);
@@ -49,16 +54,23 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
 
   // api calls
   const handleSaveClick = (index, id) => {
-    setIsPending(true);
-    updateForm(id, editedRow)
-      .then((res) => {
-        setIsPending(false);
-        setForms((prev) => [...prev.map((i) => (i.id === id ? res.data : i))]);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsPending(false);
-      });
+    if (
+      editedRow.name !== forms[index].name ||
+      editedRow.url !== forms[index].url
+    ) {
+      setIsPending(true);
+      updateForm(id, editedRow)
+        .then((res) => {
+          setIsPending(false);
+          setForms((prev) => [
+            ...prev.map((i) => (i.id === id ? res.data : i)),
+          ]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsPending(false);
+        });
+    }
     setEditIndex(-1);
   };
 
@@ -87,6 +99,11 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
         console.log(err);
         setIsPending(false);
       });
+  };
+
+  const handleClose = () => {
+    setOpenDialog(false);
+    setRowToDelete(null);
   };
 
   const copyToClipboard = (text) => {
@@ -212,7 +229,11 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
                       )}
                       <IconButton
                         aria-label="delete"
-                        onClick={() => handleDeleteRow(row.id)}
+                        // onClick={() => handleDeleteRow(row.id)}
+                        onClick={() => {
+                          setOpenDialog(true);
+                          setRowToDelete(row.id);
+                        }}
                       >
                         <DeleteIcon />
                       </IconButton>
@@ -269,6 +290,11 @@ function FormsTable({ forms, setForms, addForm, deleteForm, updateForm }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <AlertDialog
+        open={openDialog}
+        handleClose={handleClose}
+        handleAction={() => handleDeleteRow(rowToDelete)}
+      />
     </>
   );
 }
